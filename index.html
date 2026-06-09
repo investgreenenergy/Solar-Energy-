@@ -13,33 +13,43 @@
     
     <style>
         /* ==========================================================================
-           1. CSS VARIABLES & THEME SETTINGS (3D Matrix / Neon Energy)
+           1. CSS VARIABLES & THEME SETTINGS (Corporate Deep Blue & Luxury Gold)
            ========================================================================== */
    
         :root {
-            --dark-bg: #030a05;
-            --dark-green: #06140a; 
-            --dark-green-light: #102918; 
-            --dark-green-hover: #183d24; 
-            --main-green: #00FF88; 
-            --main-green-hover: #00e67a;
-            --main-green-glow: rgba(0, 255, 136, 0.4);
-            --text-light: #FFFFFF;
-            --text-gray: #a8c2b3;
-            --error-red: #FF3366;
-            --success-green: #00FF88;
-            --admin-color: #b000ff;
-            --admin-dark: #1a0524;
+            /* Балансиран фон и чисти текстове */
+            --dark-bg: #F8FAFC;              /* Чисто светло сиво за балансиран, модерен и лесен за навигация фон */
+            --text-light: #FFFFFF;           /* Чисто бяло за текстовете върху тъмните карти */
+            --text-gray: #E2E8F0;            /* Модерно светло сребристо/сиво за второстепенен текст */
+            
+            /* Основно Корпоративно Тъмносиньо (Classic / Royal Blue) */
+            --dark-green: #0A2540;           /* Дълбоко корпоративно сино за стабилност, доверие и професионализъм */
+            
+            /* Изумрудено Зелено (Emerald Green) - Скъп нюанс за богатство и енергия */
+            --dark-green-light: #004B23;     /* Дънно изумрудено зелено за инвестиционните карти */
+            --dark-green-hover: #006400;     /* Тъмен изумруден нюанс при задържане (hover) */
+            --success-green: #00875A;        /* Изумрудено зелено за успешните статуси и транзакции */
+            
+            /* Златно & Шампанско (Gold / Champagne) - Луксозни акценти и пакети */
+            --main-green: #D4AF37;           /* Кралско златно за бутони, акценти и титли */
+            --main-green-hover: #C5A059;     /* По-меко златно (шампанско) при посочване с мишката */
+            --main-green-glow: rgba(212, 175, 55, 0.35); /* Златен премиум блясък около елементите */
+            
+            /* Системни настройки */
+            --error-red: #EF4444;            /* Изчистено, модерно червено за грешки */
+            --admin-color: #6366F1;          /* Професионално индиго за админ панела */
+            --admin-dark: #0F172A;           /* Тъмен слейт за админ средата */
             --transition-speed: 0.3s;
             --border-radius-sm: 10px;
             --border-radius-md: 16px;
             --border-radius-lg: 24px;
-            /* Ultimate 3D Shadows */
-            --shadow-3d-card: 0 15px 35px rgba(0,0,0,0.8), inset 0 2px 2px rgba(255,255,255,0.05), inset 0 -4px 8px rgba(0,0,0,0.6);
-            --shadow-3d-input: inset 0 4px 8px rgba(0,0,0,0.7), 0 1px 0 rgba(255,255,255,0.05);
-            --shadow-3d-btn: 0 6px 0 #009955, 0 12px 25px rgba(0, 255, 136, 0.3), inset 0 2px 2px rgba(255,255,255,0.5);
-            --shadow-3d-btn-active: 0 0px 0 #009955, 0 2px 5px rgba(0, 255, 136, 0.2), inset 0 2px 5px rgba(0,0,0,0.4);
-            --shadow-3d-grid: 0 8px 15px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.08), 0 4px 0 #0a1c11;
+            
+            /* Преработени 3D Сенки за синьо-златно-изумрудената палитра */
+            --shadow-3d-card: 0 15px 35px rgba(10, 37, 64, 0.15), inset 0 2px 2px rgba(255,255,255,0.15), inset 0 -4px 8px rgba(0,0,0,0.4);
+            --shadow-3d-input: inset 0 4px 8px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.8);
+            --shadow-3d-btn: 0 6px 0 #9A7B1C, 0 12px 25px rgba(212, 175, 55, 0.25), inset 0 2px 2px rgba(255,255,255,0.4);
+            --shadow-3d-btn-active: 0 0px 0 #9A7B1C, 0 2px 5px rgba(212, 175, 55, 0.15), inset 0 2px 5px rgba(0,0,0,0.3);
+            --shadow-3d-grid: 0 8px 15px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 0 #061726;
         }
 
         /* ==========================================================================
