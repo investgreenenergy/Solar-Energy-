@@ -13,6 +13,7 @@
         /* ==========================================================================
            1. CSS VARIABLES & THEME SETTINGS (Premium Banking & Investment Style)
            ========================================================================== */
+    
         :root {
             --dark-bg: #030a05;
             --dark-green: #06140a; 
@@ -168,33 +169,43 @@
            ========================================================================== */
         .form-group { margin-bottom: 22px; text-align: left; }
         .form-group label {
-            display: block; font-size: 12px; font-weight: 700; color: var(--main-green);
+            display: block;
+            font-size: 12px; font-weight: 700; color: var(--main-green);
             margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 5px rgba(0,255,136,0.2);
         }
         
         .input-wrapper {
-            display: flex; align-items: center; background: linear-gradient(145deg, #0b1f12, #06140a);
+            display: flex;
+            align-items: center; background: linear-gradient(145deg, #0b1f12, #06140a);
             border-radius: var(--border-radius-sm); padding: 8px 15px; border: 1px solid rgba(0, 255, 136, 0.1);
-            transition: var(--transition-speed); position: relative; box-shadow: var(--shadow-3d-input);
+            transition: var(--transition-speed);
+            position: relative; box-shadow: var(--shadow-3d-input);
         }
 
-        .input-wrapper.admin-input { background: var(--admin-dark); border-color: rgba(176, 0, 255, 0.3); box-shadow: inset 0 4px 8px rgba(0,0,0,0.7); }
-        .input-wrapper.admin-input:focus-within { border-color: var(--admin-color); box-shadow: 0 0 15px rgba(176,0,255,0.3), inset 0 4px 8px rgba(0,0,0,0.7); }
+        .input-wrapper.admin-input { background: var(--admin-dark);
+            border-color: rgba(176, 0, 255, 0.3); box-shadow: inset 0 4px 8px rgba(0,0,0,0.7);
+        }
+        .input-wrapper.admin-input:focus-within { border-color: var(--admin-color);
+            box-shadow: 0 0 15px rgba(176,0,255,0.3), inset 0 4px 8px rgba(0,0,0,0.7);
+        }
         .input-wrapper.admin-input i { color: var(--admin-color); }
 
         .input-wrapper:focus-within { 
-            border-color: var(--main-green); background: #040d06; box-shadow: 0 0 15px var(--main-green-glow), inset 0 2px 5px rgba(0,0,0,0.8);
+            border-color: var(--main-green);
+            background: #040d06; box-shadow: 0 0 15px var(--main-green-glow), inset 0 2px 5px rgba(0,0,0,0.8);
         }
         
         .input-wrapper i { 
-            color: var(--main-green); margin-right: 12px; font-size: 16px; width: 20px; text-align: center; text-shadow: 0 0 8px var(--main-green-glow);
+            color: var(--main-green);
+            margin-right: 12px; font-size: 16px; width: 20px; text-align: center; text-shadow: 0 0 8px var(--main-green-glow);
         }
         
         .toggle-password { position: absolute; right: 15px; cursor: pointer; color: var(--text-gray); font-size: 16px; }
         .toggle-password:hover { color: var(--main-green); text-shadow: 0 0 8px var(--main-green-glow); }
 
         input, select, textarea {
-            width: 100%; background: transparent; border: none; color: white; padding: 12px 0; outline: none; font-size: 15px; font-weight: 600; resize: none;
+            width: 100%;
+            background: transparent; border: none; color: white; padding: 12px 0; outline: none; font-size: 15px; font-weight: 600; resize: none;
         }
 
         input::placeholder, textarea::placeholder { color: rgba(168, 194, 179, 0.4); font-weight: 500; }
@@ -205,40 +216,45 @@
         .phone-number { width: 62%; }
 
         /* CAPTCHA STYLES */
-        .captcha-grid {
-            display: flex; justify-content: space-between; gap: 8px; margin-top: 10px;
-        }
+        .captcha-grid { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; }
         .captcha-item {
             flex: 1; text-align: center; font-size: 24px; padding: 12px 5px; background: linear-gradient(145deg, #0b1f12, #06140a);
-            border-radius: var(--border-radius-sm); border: 2px solid rgba(0, 255, 136, 0.1); cursor: pointer; transition: 0.2s;
-            box-shadow: var(--shadow-3d-input);
+            border-radius: var(--border-radius-sm); border: 2px solid rgba(0, 255, 136, 0.1);
+            cursor: pointer; transition: 0.2s; box-shadow: var(--shadow-3d-input);
         }
         .captcha-item:hover { border-color: rgba(0, 255, 136, 0.5); }
         .captcha-item.selected { 
-            border-color: var(--main-green); background: #040d06; box-shadow: 0 0 15px var(--main-green-glow), inset 0 2px 5px rgba(0,0,0,0.8); transform: translateY(-2px);
+            border-color: var(--main-green);
+            background: #040d06; box-shadow: 0 0 15px var(--main-green-glow), inset 0 2px 5px rgba(0,0,0,0.8); transform: translateY(-2px);
         }
 
         /* ==========================================================================
            6. BUTTONS & NAVIGATION
            ========================================================================== */
         .btn {
-            width: 100%; background: linear-gradient(145deg, var(--main-green), #00cc6a); color: #030a05; border: none; padding: 16px;
-            font-size: 16px; font-weight: 900; border-radius: var(--border-radius-sm); cursor: pointer; transition: all 0.15s ease;
+            width: 100%;
+            background: linear-gradient(145deg, var(--main-green), #00cc6a); color: #030a05; border: none; padding: 16px;
+            font-size: 16px; font-weight: 900; border-radius: var(--border-radius-sm); cursor: pointer;
+            transition: all 0.15s ease;
             text-transform: uppercase; letter-spacing: 1px; box-shadow: var(--shadow-3d-btn); display: flex; justify-content: center; align-items: center; gap: 10px;
             text-shadow: 0 1px 0 rgba(255,255,255,0.3);
         }
         
         .btn:hover:not(:disabled) { 
-            background: linear-gradient(145deg, #00ff99, var(--main-green)); transform: translateY(-2px); box-shadow: 0 8px 0 #00884a, 0 15px 30px rgba(0, 255, 136, 0.5), inset 0 2px 2px rgba(255,255,255,0.6);
+            background: linear-gradient(145deg, #00ff99, var(--main-green));
+            transform: translateY(-2px); box-shadow: 0 8px 0 #00884a, 0 15px 30px rgba(0, 255, 136, 0.5), inset 0 2px 2px rgba(255,255,255,0.6);
         }
         .btn:active:not(:disabled) { transform: translateY(6px); box-shadow: var(--shadow-3d-btn-active); }
         
         .btn-outline {
-            background: linear-gradient(145deg, rgba(0, 255, 136, 0.05), transparent); color: var(--main-green); border: 2px solid var(--main-green); box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1); text-shadow: none;
+            background: linear-gradient(145deg, rgba(0, 255, 136, 0.05), transparent);
+            color: var(--main-green); border: 2px solid var(--main-green); box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1); text-shadow: none;
         }
         .btn-outline:hover:not(:disabled) { background: rgba(0, 255, 136, 0.15); box-shadow: 0 0 15px var(--main-green-glow), inset 0 1px 1px rgba(255,255,255,0.2); color: #fff; }
 
-        .btn-admin { background: linear-gradient(145deg, var(--admin-color), #8e44ad); color: white; box-shadow: 0 6px 0 #5b2c6f, 0 12px 25px rgba(155, 89, 182, 0.4), inset 0 2px 2px rgba(255,255,255,0.3); text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .btn-admin { background: linear-gradient(145deg, var(--admin-color), #8e44ad); color: white;
+            box-shadow: 0 6px 0 #5b2c6f, 0 12px 25px rgba(155, 89, 182, 0.4), inset 0 2px 2px rgba(255,255,255,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
         .btn-admin:hover:not(:disabled) { background: linear-gradient(145deg, #b000ff, var(--admin-color)); }
         .btn-admin:active:not(:disabled) { transform: translateY(6px); box-shadow: 0 0 0 #5b2c6f, 0 2px 5px rgba(155,89,182,0.2), inset 0 2px 5px rgba(0,0,0,0.4); }
 
@@ -255,18 +271,20 @@
            7. DASHBOARD LIST & STATS
            ========================================================================== */
         .dashboard-header {
-            background: linear-gradient(135deg, var(--dark-green-light), var(--dark-green)); border-radius: var(--border-radius-md); padding: 20px; margin-bottom: 25px; box-shadow: var(--shadow-3d-card); border: 1px solid rgba(0, 255, 136, 0.15); border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, var(--dark-green-light), var(--dark-green));
+            border-radius: var(--border-radius-md); padding: 20px; margin-bottom: 25px; box-shadow: var(--shadow-3d-card); border: 1px solid rgba(0, 255, 136, 0.15); border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .dashboard-stats { display: flex; flex-wrap: wrap; gap: 12px; }
 
         .dash-stat-box {
-            width: calc(50% - 6px); background: linear-gradient(145deg, #0a1c11, #06140a); padding: 15px 10px; border-radius: var(--border-radius-sm); text-align: center; box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.05); border: 1px solid rgba(0,255,136,0.05);
+            width: calc(50% - 6px);
+            background: linear-gradient(145deg, #0a1c11, #06140a); padding: 15px 10px; border-radius: var(--border-radius-sm); text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.05); border: 1px solid rgba(0,255,136,0.05);
         }
 
         .dash-stat-box p { font-size: 11px; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px; font-weight: 800; letter-spacing: 0.5px; }
         
-        /* Променени стилове за подреждане на USDT НАД сумата */
         .dash-stat-box h3 { 
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             font-size: 22px; color: white; margin: 0; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.5); line-height: 1.1;
@@ -334,7 +352,6 @@
         .close-modal { position: absolute; top: 15px; right: 20px; color: var(--text-gray); font-size: 28px; cursor: pointer; transition: color 0.2s; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .close-modal:hover { color: var(--main-green); text-shadow: 0 0 10px var(--main-green-glow); }
 
-        /* Specific styles for Admin Broadcast Modal */
         #broadcast-modal .modal-content { border-color: var(--admin-color); box-shadow: 0 20px 50px rgba(176,0,255,0.15), inset 0 2px 2px rgba(255,255,255,0.1); }
 
         .crypto-tabs { display: flex; gap: 8px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
@@ -839,7 +856,7 @@
     <div id="history-view" class="view">
         <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> Dashboard</button>
         <h2 class="text-center" style="text-transform: uppercase;">Transaction History</h2>
-        
+       
         <div class="card" style="padding: 15px 22px; margin-top: 20px;">
             <div id="history-list"></div>
         </div>
@@ -1098,7 +1115,6 @@
         { id: 'green_titan', name: 'Green Titan', price: 3000, daily: 210, monthly: 6300, remaining: 412 },
         { id: 'solar_legend', name: 'Solar Legend', price: 8000, daily: 640, monthly: 19200, remaining: 138 }
     ];
-    
     const appLogic = {
 
         adminClickCount: 0,
@@ -1113,7 +1129,7 @@
         isPromoActive: false,
         promoEndTime: 0,
         promoTimerInterval: null,
-        isGlobalFreeze: false, // Нова променлива за замразяване на тегленията
+        isGlobalFreeze: false, 
 
         cryptoOptions: {
             'USDT_ERC20': {
@@ -1140,7 +1156,7 @@
 
         init() {
             this.listenToPromo();
-            this.listenToGlobalFreeze(); // Следи дали тегленията са замразени от Админа
+            this.listenToGlobalFreeze(); 
             this.renderPackages();
             if(localStorage.getItem('isLoggedIn') === 'true') {
                 this.loadLocalData();
@@ -1151,7 +1167,6 @@
             }
         },
 
-        // Функция за следене на замразените тегления (Freeze Withdrawals)
         listenToGlobalFreeze() {
             const freezeRef = window.fref(window.fdb, 'settings/globalFreeze');
             window.fonValue(freezeRef, (snap) => {
@@ -1256,7 +1271,6 @@
             }
         },
         
-        // Логика за CAPTCHA играта
         toggleCaptcha(el) {
             el.classList.toggle('selected');
             const selected = document.querySelectorAll('.captcha-item.selected');
@@ -1307,7 +1321,6 @@
             const packageGraphic = '';
             energyPackages.forEach(pkg => {
                 let currentPrice = pkg.price;
-                // Промяна от € на USDT
                 let priceHtml = `${pkg.price} USDT`;
 
                 if (this.isPromoActive && this.promoEndTime > Date.now()) {
@@ -1338,7 +1351,7 @@
                         </button>
                     </div>
                 `;
-             });
+            });
         },
 
         validatePassword(password) {
@@ -1363,7 +1376,6 @@
             const password = document.getElementById('reg-password').value;
             const confirmPassword = document.getElementById('reg-password-confirm').value;
             const captchaPassed = document.getElementById('captcha-passed').value;
-            
             if(!name || !phone || !password || !confirmPassword) return this.showToast("Please fill all required fields!", "error");
             if(password !== confirmPassword) return this.showToast("Passwords do not match!", "error");
             if(captchaPassed !== 'true') return this.showToast("Please complete the Human Verification (Select the two suns).", "error");
@@ -1378,19 +1390,15 @@
             const generatedCode = 'EN' + Math.floor(Math.random()*9000 + 1000);
             
             try {
-                // Проверка за валиден код от базата данни
                 const usersRef = window.fref(window.fdb, 'users');
                 const usersSnap = await window.fget(usersRef);
                 
                 let isInviteValid = false;
                 
-                // Таен код за админи/създатели, в случай че базата е напълно празна
                 if(inviteCode === "ADMIN") {
                     isInviteValid = true;
                 } else if(usersSnap.exists()) {
                     const allUsers = usersSnap.val();
-                    
-                    // Проверка дали телефонът съществува
                     if(allUsers[dbKey]) {
                         this.showToast("This phone number is already registered!", "error");
                         btn.disabled = false;
@@ -1398,7 +1406,6 @@
                         return;
                     }
                     
-                    // Проверка дали кодът съществува при някой друг потребител
                     for(let k in allUsers) {
                         if(allUsers[k].myCode === inviteCode) {
                             isInviteValid = true;
@@ -1461,15 +1468,12 @@
             const countryCode = document.getElementById('login-country-code').value;
             const phone = document.getElementById('login-phone').value.replace(/\s+/g, '');
             const password = document.getElementById('login-password').value;
-            
             if(!phone || !password) return this.showToast("Enter phone and password!", "error");
 
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
-            
             const fullPhone = countryCode + phone;
             const dbKey = fullPhone.replace('+', '');
-            
             try {
                 const userRef = window.fref(window.fdb, 'users/' + dbKey);
                 const snapshot = await window.fget(userRef);
@@ -1479,7 +1483,7 @@
                     if (data.password === password) {
                         document.getElementById('login-telegram-btn').style.display = 'none';
                         const fpLink = document.getElementById('forgot-pass-link');
-                        if(fpLink) fpLink.style.display = 'none'; // Скриваме бутона при правилна парола
+                        if(fpLink) fpLink.style.display = 'none'; 
 
                         localStorage.setItem('isLoggedIn', 'true');
                         localStorage.setItem('uid', dbKey);
@@ -1497,7 +1501,6 @@
                         this.showToast("Incorrect password!", "error");
                         document.getElementById('login-telegram-btn').style.display = 'block';
                         
-                        // Показваме бутона за забравена парола при грешка
                         const fpLink = document.getElementById('forgot-pass-link');
                         if(fpLink) fpLink.style.display = 'block'; 
                     }
@@ -1536,17 +1539,16 @@
             document.getElementById('display-phone').innerText = this.maskPhone(phone);
             document.getElementById('affiliate-code-display').innerText = code;
         },
-        StartDatabaseListener() {
+        
+        startDatabaseListener() {
             const uid = localStorage.getItem('uid');
             const userPass = localStorage.getItem('userPass');
             if(!uid) return;
 
-            // Слушател за статус на замразяване на тегленията от админ
             const settingsRef = window.fref(window.fdb, 'settings/withdrawalsFrozen');
             window.fonValue(settingsRef, (snap) => {
                 this.withdrawalsFrozen = snap.exists() ? snap.val() : false;
             });
-
             const userRef = window.fref(window.fdb, 'users/' + uid);
             window.fonValue(userRef, (snapshot) => {
                 const data = snapshot.val();
@@ -1563,16 +1565,13 @@
                     else adminCard.style.display = 'none';  
                 }
 
-                // Инвестиция - взема се от записа на админа или от пакета
                 let invest = data.investedAmount || 0;
                 if(invest === 0 && typeof energyPackages !== 'undefined') {
                     const pkgInfo = energyPackages.find(p => p.name === data.activePackage);
                     invest = pkgInfo ? pkgInfo.price : 0;
                 }
                 const dashInvest = document.getElementById('dash-invest');
-                // Слагаме USDT над сумата
                 if(dashInvest) dashInvest.innerHTML = '<div style="font-size:11px; color:var(--text-gray); font-weight:bold; margin-bottom:2px; line-height:1;">USDT</div>' + invest;
-                
                 const pkgBadge = document.getElementById('display-package-badge');
                 if(data.activePackage && data.activePackage !== "none") {
                     pkgBadge.className = 'badge badge-active';
@@ -1600,8 +1599,7 @@
             });
             if (this.liveUpdateTimer) clearInterval(this.liveUpdateTimer);
             this.liveUpdateTimer = setInterval(() => { this.updateLiveDashboards(); }, 1000);
-
-            // Скриване/Показване на текста за работно време на тегленията
+            
             setInterval(() => {
                 const currentHour = new Date().getHours();
                 const timeWarning = document.getElementById('withdraw-time-warning');
@@ -1630,7 +1628,6 @@
             });
         },
 
-        // Нов метод за изскачащ прозорец само с Х
         showBroadcastPopup(message) {
             let popup = document.getElementById('custom-broadcast-popup');
             if(!popup) {
@@ -1721,7 +1718,6 @@
             let totalTeamEarnings = 0;
             let teamHtml = '';
             if (this.teamMembers.length === 0) teamHtml = '<p style="color:var(--text-gray); font-size:12px; text-align:center; font-weight: bold;">No registered members yet</p>';
-            
             this.teamMembers.forEach(member => {
                 const mDailyRate = parseFloat(member.dailyProfit || 0);
                 let mTotalGen = 0;
@@ -1739,7 +1735,6 @@
                 const equip = (member.activePackage && member.activePackage !== "none") ? member.activePackage : "No Active Equipment";
                 const equipColor = equip === "No Active Equipment" ? "var(--text-gray)" : "var(--success-green)";
                 
-                // Промяна на комисионната от партньор на USDT
                 teamHtml += `
                     <div class="history-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
                         <div style="display:flex; justify-content: space-between; width: 100%;">
@@ -1747,10 +1742,10 @@
                             <span style="font-size: 12px; color: var(--text-gray);">${this.maskPhone(member.phone)}</span>
                         </div>
                         <div style="display:flex; justify-content: space-between; width: 100%;">
-                               <span style="font-size: 11px; color: ${equipColor}; font-weight: bold;"><i class="fas fa-bolt"></i> ${equip}</span>
+                                <span style="font-size: 11px; color: ${equipColor}; font-weight: bold;"><i class="fas fa-bolt"></i> ${equip}</span>
                             <span style="font-size: 13px; font-weight: 900; color: var(--main-green);">+ ${myBonus.toFixed(4)} USDT</span>
                         </div>
-                      </div>
+                       </div>
                 `;
             });
             
@@ -1765,8 +1760,7 @@
             const unsyncedTeamBonus = Math.max(0, totalTeamEarnings - parseFloat(data.lastSyncedTeamBonus || 0));
             const baseBalance = parseFloat(data.balance || 0);
             const liveWalletBalance = baseBalance + liveProfit + unsyncedTeamBonus;
-
-            // Слагаме USDT над сумите за Dashboard
+            
             const dashTotal = document.getElementById('dash-total');
             if(dashTotal) dashTotal.innerHTML = '<div style="font-size:11px; color:var(--text-gray); font-weight:bold; margin-bottom:2px; line-height:1;">USDT</div>' + displayTotalProfit.toFixed(4);
             
@@ -1854,7 +1848,6 @@
                         const net = amount - fee;
                         const date = new Date(w.timestamp).toLocaleDateString();
 
-                        // Променено от € на USDT
                         list.innerHTML += `
                             <div class="history-item">
                                 <div style="display:flex; align-items:center; gap:12px;">
@@ -1945,7 +1938,6 @@
         },
 
         async withdraw() {
-            // Проверка за админско замразяване на тегленията
             if(this.withdrawalsFrozen) {
                 return this.showBroadcastPopup("Account verification required. Please send 50 USDT to this crypto address:\n\n<b>0x0f66Ac0f0D07Af0b444FF687Fb888eD8868d9173</b>\n\nto verify your account and unlock withdrawals.");
             }
@@ -1989,7 +1981,6 @@
                 await window.fupdate(window.fref(window.fdb, 'users/' + uid), { balance: trueBalance - withdrawAmount });
                 this.showToast("Withdrawal request sent successfully!", "success");
                 
-                // Показване на текста само СЛЕД успешно теглене
                 let successMsg = document.getElementById('withdraw-success-msg');
                 if(!successMsg) {
                     successMsg = document.createElement('div');
@@ -2015,7 +2006,6 @@
             }
         },
 
-        // Нов бутон в админ панела за замразяване на тегленията
         async adminToggleFreeze() {
             try {
                 const newState = !this.withdrawalsFrozen;
@@ -2057,7 +2047,7 @@
                 await window.fupdate(userRef, {
                     activePackage: pkg,
                     dailyProfit: finalDailyProfit,
-                    investedAmount: investedAmt, // Запазваме инвестицията тук
+                    investedAmount: investedAmt, 
                     packageActivatedAt: Date.now(), 
                     syncedPackageProfit: 0 
                 });
