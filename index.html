@@ -11,32 +11,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <style>
+        <style>
         /* ==========================================================================
-           1. CSS VARIABLES & THEME SETTINGS (Corporate Deep Blue & Luxury Gold)
+           1. CSS VARIABLES & THEME SETTINGS (Premium Banking & Investment Style)
            ========================================================================== */
    
         :root {
-            /* Балансиран фон и чисти текстове */
-            --dark-bg: #F8FAFC;              /* Чисто светло сиво за балансиран, модерен и лесен за навигация фон */
+            /* Балансиран фон за банково приложение (Преливащ към бяло/светло сиво) */
+            --dark-bg: #FFFFFF;              /* Чисто бяла основа на сайта */
             --text-light: #FFFFFF;           /* Чисто бяло за текстовете върху тъмните карти */
-            --text-gray: #E2E8F0;            /* Модерно светло сребристо/сиво за второстепенен текст */
+            --text-gray: #64748B;            /* Елегантно банково сиво за текстовете върху бял фон */
             
-            /* Основно Корпоративно Тъмносиньо (Classic / Royal Blue) */
-            --dark-green: #0A2540;           /* Дълбоко корпоративно сино за стабилност, доверие и професионализъм */
+            /* Основно Корпоративно Тъмносиньо (Основа на сигурността) */
+            --dark-green: #0A2540;           /* Дълбоко тъмносиньо (използвано от Stripe и PayPal) */
             
-            /* Изумрудено Зелено (Emerald Green) - Скъп нюанс за богатство и енергия */
-            --dark-green-light: #004B23;     /* Дънно изумрудено зелено за инвестиционните карти */
+            /* Изумрудено Зелено (Инвестиция, Енергия и Богатство) */
+            --dark-green-light: #004B23;     /* Дълбоко изумрудено зелено за инвестиционните карти */
             --dark-green-hover: #006400;     /* Тъмен изумруден нюанс при задържане (hover) */
-            --success-green: #00875A;        /* Изумрудено зелено за успешните статуси и транзакции */
+            --success-green: #10B981;        /* Модерно банково зелено за успешни преводи */
             
-            /* Златно & Шампанско (Gold / Champagne) - Луксозни акценти и пакети */
-            --main-green: #D4AF37;           /* Кралско златно за бутони, акценти и титли */
-            --main-green-hover: #C5A059;     /* По-меко златно (шампанско) при посочване с мишката */
-            --main-green-glow: rgba(212, 175, 55, 0.35); /* Златен премиум блясък около елементите */
+            /* Новите Банкови Бутони (Royal Blue & Gold Highlights) */
+            --main-green: #1D4ED8;           /* Изискано Кралско синьо за основните бутони */
+            --main-green-hover: #2563EB;     /* По-ярко синьо при посочване с мишката */
+            --main-green-glow: rgba(29, 78, 216, 0.2); /* Дискретно синьо сияние за сигурност */
             
             /* Системни настройки */
-            --error-red: #EF4444;            /* Изчистено, модерно червено за грешки */
+            --error-red: #EF4444;            /* Модерно червено за грешки и откази */
             --admin-color: #6366F1;          /* Професионално индиго за админ панела */
             --admin-dark: #0F172A;           /* Тъмен слейт за админ средата */
             --transition-speed: 0.3s;
@@ -44,12 +44,46 @@
             --border-radius-md: 16px;
             --border-radius-lg: 24px;
             
-            /* Преработени 3D Сенки за синьо-златно-изумрудената палитра */
-            --shadow-3d-card: 0 15px 35px rgba(10, 37, 64, 0.15), inset 0 2px 2px rgba(255,255,255,0.15), inset 0 -4px 8px rgba(0,0,0,0.4);
-            --shadow-3d-input: inset 0 4px 8px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.8);
-            --shadow-3d-btn: 0 6px 0 #9A7B1C, 0 12px 25px rgba(212, 175, 55, 0.25), inset 0 2px 2px rgba(255,255,255,0.4);
-            --shadow-3d-btn-active: 0 0px 0 #9A7B1C, 0 2px 5px rgba(212, 175, 55, 0.15), inset 0 2px 5px rgba(0,0,0,0.3);
-            --shadow-3d-grid: 0 8px 15px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 0 #061726;
+            /* Изчистени Премиум Банкови 3D Сенки */
+            --shadow-3d-card: 0 20px 40px rgba(10, 37, 64, 0.08), inset 0 2px 2px rgba(255,255,255,0.2), inset 0 -4px 6px rgba(0,0,0,0.3);
+            --shadow-3d-input: inset 0 2px 4px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.8);
+            --shadow-3d-btn: 0 5px 0 #1E40AF, 0 10px 20px rgba(29, 78, 216, 0.2), inset 0 2px 2px rgba(255,255,255,0.3);
+            --shadow-3d-btn-active: 0 0px 0 #1E40AF, 0 2px 5px rgba(29, 78, 216, 0.1), inset 0 2px 5px rgba(0,0,0,0.2);
+            --shadow-3d-grid: 0 8px 15px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 0 #061726;
+        }
+
+        /* ПРЕЛИВАНЕ НА ФОНА: От Корпоративно Тъмносиньо горе към Чисто Бяло долу */
+        body {
+            background-color: var(--dark-bg);
+            background-image: linear-gradient(to bottom, #0A2540 0%, #1E3A8A 35%, #F8FAFC 65%, #FFFFFF 100%);
+            color: #0A2540; /* Основен цвят на текстовете в белите зони */
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ЛУКСОЗНО ЗЛАТНО / ШАМПАНСКО ЗАГЛАВИЕ НА ЛОГОТО (Premium Banking Титла) */
+        .logo-title {
+            font-size: 34px;
+            font-weight: 900;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            user-select: none;
+            cursor: default;
+            color: #D4AF37; /* Кралско Злато */
+            background: none;
+            -webkit-text-fill-color: initial;
+            text-shadow: 
+                0 1px 0 #C5A059, 
+                0 2px 0 #9A7B1C, 
+                0 3px 0 #7D6315, 
+                0 4px 1px rgba(212,175,55,0.2), 
+                0 0 10px rgba(212,175,55,0.3), 
+                0 1px 3px rgba(0,0,0,0.3);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
         /* ==========================================================================
