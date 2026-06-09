@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Invest In Energy ⚡️</title>
+    <title>Solar Energy ⚡️</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
@@ -539,7 +539,7 @@
         <p id="forgot-pass-link" class="switch-link" style="margin-top: 15px; display: none;" onclick="appLogic.openForgotPassword()">Forgot password? <span>Reset it</span></p>
 
         <div id="login-telegram-btn" style="display: none; margin-top: 15px;">
-            <button class="btn btn-outline" style="background: rgba(255, 51, 102, 0.1); border-color: var(--error-red); color: var(--error-red); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);" onclick="window.open('https://t.me/greenenergysuport', '_blank')">
+            <button class="btn btn-outline" style="background: rgba(255, 51, 102, 0.1); border-color: var(--error-red); color: var(--error-red); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);" onclick="window.open('https://t.me/@solarenergysupport', '_blank')">
                 <i class="fab fa-telegram-plane"></i> Chat with Support
             </button>
         </div>
@@ -547,7 +547,7 @@
 
     <div id="register-view" class="view">
         <div class="text-center">
-            <h1 class="logo-title">Invest In Energy</h1>
+            <h1 class="logo-title">Solar Energy</h1>
             
             <div class="auth-tabs-container">
                 <div class="auth-tab-btn active" onclick="appLogic.switchAuthView('register')">Register</div>
@@ -643,19 +643,19 @@
             <div class="dashboard-stats">
                 <div class="dash-stat-box">
                     <p>Investment</p>
-                    <h3><span id="dash-invest">0</span>€</h3>
+                    <h3><span id="dash-invest">0</span>USDT</h3>
                 </div>
                 <div class="dash-stat-box">
                     <p>Total Profit</p>
-                    <h3><span id="dash-total">0</span>€</h3>
+                    <h3><span id="dash-total">0</span>USDT</h3>
                 </div>
                 <div class="dash-stat-box">
                     <p>Yesterday</p>
-                    <h3><span id="dash-yest">0</span>€</h3>
+                    <h3><span id="dash-yest">0</span>USDT</h3>
                 </div>
                 <div class="dash-stat-box">
                     <p>Today</p>
-                    <h3><span id="dash-today">0</span>€</h3>
+                    <h3><span id="dash-today">0</span>USDT</h3>
                 </div>
             </div>
         </div>
@@ -663,7 +663,7 @@
         <div class="dashboard-grid">
             <div class="grid-item" onclick="appLogic.navTo('packages')">
                 <i class="fas fa-store"></i>
-                <span>Store Packages</span>
+                <span>Shop</span>
             </div>
             <div class="grid-item" onclick="appLogic.navTo('affiliate')">
                 <i class="fas fa-users"></i>
@@ -675,15 +675,15 @@
             </div>
             <div class="grid-item" onclick="appLogic.navTo('wallet')">
                 <i class="fas fa-wallet"></i>
-                <span>Wallet & Withdraw</span>
+                <span>Wallet</span>
             </div>
             <div class="grid-item" onclick="appLogic.navTo('energy-plans')">
                 <i class="fas fa-bolt"></i>
-                <span>Energy Income Plans</span>
+                <span>Solar Plans Info </span>
             </div>
             <div class="grid-item" onclick="appLogic.navTo('profile')">
                 <i class="fas fa-user"></i>
-                <span>Profile Settings</span>
+                <span>Profile</span>
             </div>
             <div class="grid-item" onclick="appLogic.secureLogout().catch(console.error)" style="border-left: 4px solid var(--error-red);">
                 <i class="fas fa-sign-out-alt" style="color: var(--error-red); filter: drop-shadow(0 0 5px rgba(255,51,102,0.4));"></i>
