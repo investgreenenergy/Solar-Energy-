@@ -16,75 +16,32 @@
            1. CSS VARIABLES & THEME SETTINGS (Premium Banking & Investment Style)
            ========================================================================== */
    
-        :root {
-            /* Балансиран фон за банково приложение (Преливащ към бяло/светло сиво) */
-            --dark-bg: #FFFFFF;              /* Чисто бяла основа на сайта */
-            --text-light: #FFFFFF;           /* Чисто бяло за текстовете върху тъмните карти */
-            --text-gray: #64748B;            /* Елегантно банково сиво за текстовете върху бял фон */
-            
-            /* Основно Корпоративно Тъмносиньо (Основа на сигурността) */
-            --dark-green: #0A2540;           /* Дълбоко тъмносиньо (използвано от Stripe и PayPal) */
-            
-            /* Изумрудено Зелено (Инвестиция, Енергия и Богатство) */
-            --dark-green-light: #004B23;     /* Дълбоко изумрудено зелено за инвестиционните карти */
-            --dark-green-hover: #006400;     /* Тъмен изумруден нюанс при задържане (hover) */
-            --success-green: #10B981;        /* Модерно банково зелено за успешни преводи */
-            
-            /* Новите Банкови Бутони (Royal Blue & Gold Highlights) */
-            --main-green: #1D4ED8;           /* Изискано Кралско синьо за основните бутони */
-            --main-green-hover: #2563EB;     /* По-ярко синьо при посочване с мишката */
-            --main-green-glow: rgba(29, 78, 216, 0.2); /* Дискретно синьо сияние за сигурност */
-            
-            /* Системни настройки */
-            --error-red: #EF4444;            /* Модерно червено за грешки и откази */
-            --admin-color: #6366F1;          /* Професионално индиго за админ панела */
-            --admin-dark: #0F172A;           /* Тъмен слейт за админ средата */
-            --transition-speed: 0.3s;
+               :root {
+            --dark-bg: #FFFFFF;
+            --dark-green: #0A2540; 
+            --dark-green-light: #1E3A8A; 
+            --dark-green-hover: #1D4ED8; 
+            --main-green: #FFFFFF; 
+            --main-green-hover: #F8FAFC;
+            --main-green-glow: rgba(0, 0, 0, 0.05);
+            --text-light: #000000;
+            --text-gray: #475569;
+            --error-red: #DC2626;
+            --success-green: #059669;
+            --admin-color: #FFD700;
+            --admin-dark: #0A2540;
+            --transition-speed: 0.25s;
             --border-radius-sm: 10px;
             --border-radius-md: 16px;
             --border-radius-lg: 24px;
-            
-            /* Изчистени Премиум Банкови 3D Сенки */
-            --shadow-3d-card: 0 20px 40px rgba(10, 37, 64, 0.08), inset 0 2px 2px rgba(255,255,255,0.2), inset 0 -4px 6px rgba(0,0,0,0.3);
-            --shadow-3d-input: inset 0 2px 4px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.8);
-            --shadow-3d-btn: 0 5px 0 #1E40AF, 0 10px 20px rgba(29, 78, 216, 0.2), inset 0 2px 2px rgba(255,255,255,0.3);
-            --shadow-3d-btn-active: 0 0px 0 #1E40AF, 0 2px 5px rgba(29, 78, 216, 0.1), inset 0 2px 5px rgba(0,0,0,0.2);
-            --shadow-3d-grid: 0 8px 15px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 0 #061726;
+            /* Ultimate 3D Shadows */
+            --shadow-3d-card: 0 10px 30px rgba(0,0,0,0.06), inset 0 1px 1px rgba(0,0,0,0.05);
+            --shadow-3d-input: inset 0 2px 4px rgba(0,0,0,0.05), 0 1px 0 #CBD5E1;
+            --shadow-3d-btn: 0 5px 0 #000000, 0 10px 20px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255,255,255,1);
+            --shadow-3d-btn-active: 0 0px 0 #000000, 0 2px 4px rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-3d-grid: 0 4px 10px rgba(0,0,0,0.04), 0 3px 0 #E2E8F0;
         }
 
-        /* ПРЕЛИВАНЕ НА ФОНА: От Корпоративно Тъмносиньо горе към Чисто Бяло долу */
-        body {
-            background-color: var(--dark-bg);
-            background-image: linear-gradient(to bottom, #0A2540 0%, #1E3A8A 35%, #F8FAFC 65%, #FFFFFF 100%);
-            color: #0A2540; /* Основен цвят на текстовете в белите зони */
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ЛУКСОЗНО ЗЛАТНО / ШАМПАНСКО ЗАГЛАВИЕ НА ЛОГОТО (Premium Banking Титла) */
-        .logo-title {
-            font-size: 34px;
-            font-weight: 900;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            user-select: none;
-            cursor: default;
-            color: #D4AF37; /* Кралско Злато */
-            background: none;
-            -webkit-text-fill-color: initial;
-            text-shadow: 
-                0 1px 0 #C5A059, 
-                0 2px 0 #9A7B1C, 
-                0 3px 0 #7D6315, 
-                0 4px 1px rgba(212,175,55,0.2), 
-                0 0 10px rgba(212,175,55,0.3), 
-                0 1px 3px rgba(0,0,0,0.3);
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
 
         /* ==========================================================================
            2. RESET & GLOBAL STYLES
