@@ -1168,18 +1168,23 @@
     window.fpush = push;
 </script>
 
-<script>
+<script>  
     const energyPackages = [
-        { id: 'basic1', name: 'Basic 1', price: 80, daily: 3, monthly: 90, remaining: 9238 },
-        { id: 'basic2', name: 'Basic 2', price: 200, daily: 9, monthly: 270, remaining: 7302 },
-        { id: 'basic3', name: 'Basic 3', price: 500, daily: 23, monthly: 690, remaining: 5291 },
-        { id: 'vip1', name: 'VIP 1', price: 1200, daily: 59, monthly: 1770, remaining: 3202 },
-        { id: 'vip2', name: 'VIP 2', price: 3000, daily: 165, monthly: 4950, remaining: 2911 },
-        { id: 'vip3', name: 'VIP 3', price: 6500, daily: 430, monthly: 12900, remaining: 3018 },
-        { id: 'ultimate', name: 'Ultimate Energy', price: 20000, daily: 1500, monthly: 45000, remaining: 201 }
+        { id: 'solar_start', name: 'Solar Start', price: 30, daily: 1.5, monthly: 45, remaining: 9412 },
+        { id: 'sun_basic', name: 'Sun Basic', price: 50, daily: 2.5, monthly: 75, remaining: 8134 },
+        { id: 'eco_plus', name: 'Eco Plus', price: 100, daily: 5, monthly: 150, remaining: 6521 },
+        { id: 'green_power', name: 'Green Power', price: 150, daily: 7.5, monthly: 225, remaining: 5109 },
+        { id: 'solar_prime', name: 'Solar Prime', price: 250, daily: 12.5, monthly: 375, remaining: 4230 },
+        { id: 'energy_pro', name: 'Energy Pro', price: 400, daily: 24, monthly: 720, remaining: 3115 },
+        { id: 'sun_elite', name: 'Sun Elite', price: 750, daily: 45, monthly: 1350, remaining: 2401 },
+        { id: 'eco_platinum', name: 'Eco Platinum', price: 1200, daily: 72, monthly: 2160, remaining: 1592 },
+        { id: 'solar_infinity', name: 'Solar Infinity', price: 1800, daily: 108, monthly: 3240, remaining: 834 },
+        { id: 'green_titan', name: 'Green Titan', price: 3000, daily: 210, monthly: 6300, remaining: 412 },
+        { id: 'solar_legend', name: 'Solar Legend', price: 8000, daily: 640, monthly: 19200, remaining: 138 }
     ];
     
     const appLogic = {
+
         adminClickCount: 0,
         adminClickTimer: null,
         currentUserData: null,
