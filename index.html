@@ -5,32 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Solar Energy</title>
+    <title>Solar Energy ⚡️</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ==========================================================================
+           1. CSS VARIABLES & THEME SETTINGS
+           ========================================================================== */
         :root {
-            --bg-blue: #dceeff;
-            --bg-yellow: #fff6cf;
-            --bg-white: #ffffff;
-            --text-black: #000000;
-            --text-dark: #0d1b2a;
-            --field-blue: rgba(18, 48, 92, 0.12);
-            --field-blue-border: rgba(18, 48, 92, 0.18);
-            --button-white: #ffffff;
-            --button-dark-blue: rgba(18, 48, 92, 0.88);
-            --button-dark-blue-soft: rgba(18, 48, 92, 0.10);
-            --accent-blue: rgba(18, 48, 92, 0.75);
-            --accent-blue-dark: rgba(18, 48, 92, 0.92);
-            --accent-yellow: rgba(255, 245, 180, 0.30);
+            --dark-bg: #ffffff;
+            --dark-blue-card: #0a1930;
+            --dark-blue-trans: rgba(10, 25, 50, 0.85);
+            --main-green: #00FF88; 
+            --main-green-hover: #00e67a;
+            --main-green-glow: rgba(0, 255, 136, 0.4);
+            --text-light: #FFFFFF;
+            --text-gray: #a8c2b3;
+            --text-dark: #000000;
+            --error-red: #FF3366;
+            --success-green: #00FF88;
+            --admin-color: #b000ff;
             --transition-speed: 0.3s;
             --border-radius-sm: 10px;
             --border-radius-md: 16px;
             --border-radius-lg: 24px;
-            --shadow-soft: 0 12px 30px rgba(0,0,0,0.08);
         }
 
+        /* ==========================================================================
+           2. RESET & GLOBAL STYLES
+           ========================================================================== */
         * {
             margin: 0;
             padding: 0;
@@ -40,8 +44,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--bg-blue) 0%, var(--bg-yellow) 42%, var(--bg-white) 74%);
-            color: var(--text-black);
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             min-height: 100vh;
@@ -49,47 +52,44 @@
         }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.35); }
-        ::-webkit-scrollbar-thumb { background: rgba(18, 48, 92, 0.35); border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--dark-blue-card); border-radius: 10px; }
 
+        /* ==========================================================================
+           3. LAYOUT & CONTAINER (НОВ ФОН)
+           ========================================================================== */
         #app-container {
             width: 100%;
             max-width: 480px;
+            /* Фон: горе вляво светло синьо, горе вдясно светло жълто, след 4см (около 150px) чисто бяло надолу */
+            background: 
+                radial-gradient(circle at 0% 0%, #add8e6 0%, rgba(173,216,230,0) 250px),
+                radial-gradient(circle at 100% 0%, #ffffe0 0%, rgba(255,255,224,0) 250px),
+                linear-gradient(180deg, transparent 0%, transparent 150px, #ffffff 150px, #ffffff 100%);
+            background-color: #ffffff;
+            position: relative;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            position: relative;
             overflow-x: hidden;
-            background: linear-gradient(135deg, rgba(220,238,255,0.96) 0%, rgba(255,246,207,0.82) 40%, rgba(255,255,255,1) 72%);
-            box-shadow: none;
+            color: var(--text-dark);
         }
 
         .view {
             display: none;
             flex: 1;
-            padding: 25px 20px 40px;
+            padding: 25px 20px;
+            padding-bottom: 40px;
             animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .view.active { display: block; }
 
-        .lightning-container { display: none !important; }
-
-        h1, h2, h3, h4, h5 {
-            color: var(--text-black);
-            margin-bottom: 15px;
-            font-weight: 900;
-            text-shadow: none;
-        }
-
+        /* ==========================================================================
+           4. TYPOGRAPHY & ANIMATIONS
+           ========================================================================== */
         .text-center { text-align: center; }
-        .text-gray { color: rgba(0,0,0,0.65); }
-        .text-white { color: #fff; }
-        .text-sm { font-size: 12px; }
-        .text-md { font-size: 14px; }
-        .text-lg { font-size: 18px; }
-        .text-xl { font-size: 24px; }
-
+        
         .logo-title {
             font-size: 34px;
             font-weight: 900;
@@ -97,12 +97,7 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: -1px;
-            user-select: none;
-            cursor: default;
-            color: #000000 !important;
-            background: none !important;
-            -webkit-text-fill-color: #000000 !important;
-            text-shadow: none !important;
+            color: #000000; /* Черен надпис SOLAR ENERGY */
         }
 
         .auth-tabs-container {
@@ -112,7 +107,7 @@
             margin-bottom: 25px;
             padding: 0 10px;
         }
-
+        
         .auth-tab-btn {
             flex: 1;
             padding: 12px;
@@ -124,219 +119,249 @@
             text-align: center;
             font-size: 13px;
             letter-spacing: 1px;
+            color: #000;
+            border: 1px solid #ccc;
         }
-
+        
         .auth-tab-btn.active {
-            background: rgba(18, 48, 92, 0.12);
-            color: #000000;
-            box-shadow: none;
-            border: 1px solid rgba(18, 48, 92, 0.18);
+            background: var(--dark-blue-card);
+            color: #fff;
+            border-color: var(--dark-blue-card);
         }
 
-        .auth-tab-btn.inactive {
-            background: rgba(255,255,255,0.58);
-            color: #000000;
-            border: 1px solid rgba(18, 48, 92, 0.10);
-            box-shadow: none;
-        }
-
+        /* ==========================================================================
+           5. FORMS, INPUTS & LOGIN/REGISTER (Нов дизайн)
+           ========================================================================== */
         .form-group { margin-bottom: 22px; text-align: left; }
-
         .form-group label {
             display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: #000000 !important;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: none !important;
+            font-size: 12px; font-weight: 800; color: #000;
+            margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;
         }
-
+        
+        /* Много лек тъмно син оттенък */
         .input-wrapper {
             display: flex;
-            align-items: center;
-            background: rgba(18, 48, 92, 0.10) !important;
-            border-radius: var(--border-radius-sm);
-            padding: 8px 15px;
-            border: 1px solid rgba(18, 48, 92, 0.16) !important;
-            transition: var(--transition-speed);
+            align-items: center; 
+            background: rgba(10, 25, 50, 0.05);
+            border-radius: var(--border-radius-sm); 
+            padding: 6px 15px; 
+            border: 1px solid rgba(10, 25, 50, 0.1);
             position: relative;
-            box-shadow: none !important;
         }
 
-        .input-wrapper:focus-within {
-            border-color: rgba(18, 48, 92, 0.30);
-            background: rgba(18, 48, 92, 0.14);
-        }
+        .input-wrapper.admin-input { background: #fff; border-color: var(--admin-color); }
 
-        .input-wrapper i {
-            color: #ffffff !important;
-            margin-right: 12px;
-            font-size: 16px;
-            width: 20px;
-            text-align: center;
-            text-shadow: none !important;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 15px;
-            cursor: pointer;
-            color: rgba(0,0,0,0.55);
-            font-size: 16px;
-        }
-
-        .toggle-password:hover { color: #000000; }
-
-        input, select, textarea {
-            width: 100%;
-            background: transparent;
-            border: none;
-            color: #000000 !important;
-            padding: 12px 0;
-            outline: none;
-            font-size: 15px;
-            font-weight: 600;
-            resize: none;
-        }
-
-        input::placeholder, textarea::placeholder { color: rgba(0,0,0,0.45); font-weight: 500; }
-        select option { background: #ffffff; color: #000000; }
-
-        .phone-group { display: flex; gap: 12px; }
-        .phone-code { width: 38%; }
-        .phone-number { width: 62%; }
-
-        .captcha-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .captcha-item {
-            flex: 1;
-            text-align: center;
-            font-size: 24px;
-            padding: 12px 5px;
-            background: rgba(18, 48, 92, 0.08);
-            border-radius: var(--border-radius-sm);
-            border: 2px solid rgba(18, 48, 92, 0.10);
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: none;
-            color: #000000;
-        }
-
-        .captcha-item:hover { border-color: rgba(18, 48, 92, 0.28); }
-
-        .captcha-item.selected {
-            border-color: rgba(18, 48, 92, 0.45);
-            background: rgba(18, 48, 92, 0.14);
-            transform: translateY(-2px);
-        }
-
-        .btn {
-            width: 100%;
-            background: rgba(18, 48, 92, 0.88);
-            color: #ffffff;
-            border: none;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 900;
-            border-radius: var(--border-radius-sm);
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: none;
+        .input-icon-box {
+            background: var(--dark-blue-card);
+            color: #fff; /* Бели иконки */
+            width: 32px;
+            height: 32px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            text-shadow: none;
+            border-radius: 6px;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .toggle-password { position: absolute; right: 15px; cursor: pointer; color: var(--dark-blue-card); font-size: 16px; }
+
+        input, select, textarea {
+            width: 100%;
+            background: transparent; border: none; color: #000; /* Черни букви */
+            padding: 12px 0; outline: none; font-size: 15px; font-weight: 700; resize: none;
         }
 
-        .btn:hover:not(:disabled) {
-            background: rgba(18, 48, 92, 0.96);
-            transform: translateY(-2px);
-        }
+        input::placeholder, textarea::placeholder { color: rgba(0, 0, 0, 0.4); font-weight: 500; }
+        select option { background: #fff; color: #000; }
 
-        .btn:active:not(:disabled) { transform: translateY(2px); }
+        .phone-group { display: flex; gap: 12px; }
+        .phone-code { width: 42%; }
+        .phone-number { width: 58%; }
+
+        .captcha-grid { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; }
+        .captcha-item {
+            flex: 1; text-align: center; font-size: 24px; padding: 12px 5px; background: rgba(10,25,50,0.05);
+            border-radius: var(--border-radius-sm); border: 2px solid rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s;
+        }
+        .captcha-item.selected { border-color: var(--dark-blue-card); background: rgba(10,25,50,0.1); transform: translateY(-2px); }
+
+        /* ==========================================================================
+           6. BUTTONS & NAVIGATION
+           ========================================================================== */
+        .btn {
+            width: 100%;
+            background: var(--dark-blue-card); color: #fff; border: none; padding: 16px;
+            font-size: 16px; font-weight: 900; border-radius: var(--border-radius-sm); cursor: pointer;
+            transition: all 0.15s ease; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        
+        .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(10,25,50,0.3); }
+        .btn:active:not(:disabled) { transform: translateY(2px); box-shadow: none; }
+        
+        /* Ботона Създай акаунт бял цвят */
+        .btn-white {
+            background: #ffffff; color: #000000; border: 2px solid #000000;
+        }
+        .btn-white:hover:not(:disabled) { background: #f0f0f0; }
 
         .btn-outline {
-            background: rgba(255,255,255,0.75);
-            color: #000000;
-            border: 1px solid rgba(18, 48, 92, 0.18);
-            box-shadow: none;
-            text-shadow: none;
-        }
-
-        .btn-outline:hover:not(:disabled) {
-            background: rgba(255,255,255,0.92);
-            color: #000000;
-        }
-
-        .switch-link {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 14px;
-            color: #000000;
-            cursor: pointer;
-            padding: 10px;
-            font-weight: 600;
-        }
-
-        .switch-link span {
-            color: #000000;
-            font-weight: 800;
-            text-decoration: none;
-            border-bottom: 2px dashed rgba(0,0,0,0.55);
-        }
-
-        .back-btn {
             background: transparent;
-            color: #000000;
-            border: none;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-            padding: 5px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: none;
+            color: var(--dark-blue-card); border: 2px solid var(--dark-blue-card); 
         }
 
-        .dashboard-header, .card, .package-card, .modal-content {
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(18, 48, 92, 0.08);
+        .switch-link { text-align: center; margin-top: 25px; font-size: 14px; color: #555; cursor: pointer; font-weight: 600; }
+        .switch-link span { color: var(--dark-blue-card); font-weight: 800; border-bottom: 2px dashed var(--dark-blue-card); }
+
+        .back-btn { background: transparent; color: var(--dark-blue-card); border: none; font-size: 14px; font-weight: 800;
+            cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; text-transform: uppercase; }
+
+        /* ==========================================================================
+           7. HEADER & FLIP CARD (Ново Табло)
+           ========================================================================== */
+        .dash-header-new {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 10px; margin-bottom: 10px;
+        }
+        
+        .avatar-trigger {
+            width: 50px; height: 50px; border-radius: 50%; background: var(--dark-blue-card);
+            display: flex; justify-content: center; align-items: center; font-size: 28px;
+            cursor: pointer; border: 2px solid #000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(40px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        .user-info-top {
+            text-align: left; /* Разположено вдясно, но подравнено наляво */
+            margin-left: auto; /* Избутва вдясно */
         }
+
+        .flip-card {
+            background-color: transparent; width: 100%; height: 160px;
+            perspective: 1000px; margin-top: 30px; margin-bottom: 30px;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: left;
+            transition: transform 0.6s; transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            background: var(--dark-blue-card); color: white; border-radius: var(--border-radius-md);
+            padding: 20px; box-shadow: 0 10px 25px rgba(10,25,50,0.4);
+        }
+        .flip-card-back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+
+        .flip-arrows {
+            position: absolute; bottom: 15px; right: 15px; font-size: 18px; color: var(--main-green);
+            cursor: pointer; padding: 5px;
+        }
+        .flip-withdrawal-btn {
+            position: absolute; top: 20px; right: 20px; font-size: 12px; font-weight: 800;
+            color: var(--main-green); text-transform: uppercase; cursor: pointer; letter-spacing: 1px;
+        }
+
+        /* ==========================================================================
+           8. DASHBOARD GRID & CARDS
+           ========================================================================== */
+        .dashboard-grid { display: flex; flex-direction: column; gap: 15px; }
+        .grid-item { 
+            background: var(--dark-blue-trans); border-radius: var(--border-radius-md); padding: 20px 25px;
+            cursor: pointer; transition: all 0.15s ease; display: flex; flex-direction: row; align-items: center;
+        }
+        .grid-item i { font-size: 24px; color: var(--main-green); margin-right: 20px; width: 30px; text-align: center; }
+        .grid-item:hover { transform: translateY(-2px); background: #0c1f3d; }
+        .grid-item span { font-size: 15px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .card { 
+            background: var(--dark-blue-trans); color: white;
+            border-radius: var(--border-radius-md); padding: 22px; margin-bottom: 20px;
+        }
+        
+        .card-admin { background: #fff; color: #000; border: 2px solid var(--error-red); }
+
+        /* ==========================================================================
+           9. STORE PACKAGES (Shop)
+           ========================================================================== */
+        .package-card { 
+            background: rgba(10, 25, 50, 0.85); /* Прозрачно синьо */
+            border-radius: var(--border-radius-md); padding: 25px; margin-bottom: 25px; position: relative; color: white;
+        }
+        .package-title { font-size: 26px; font-weight: 900; color: var(--main-green); margin-bottom: 5px; text-transform: uppercase; }
+        .package-price { font-size: 36px; font-weight: 900; margin: 15px 0; color: white; }
+        .package-details { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 13px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: var(--border-radius-sm); }
+        .package-details strong { color: var(--main-green); font-size: 18px; display: block; margin-top: 5px; font-weight: 900; }
+        
+        .buy-btn { background: rgba(0, 255, 136, 0.15); border: 1px solid var(--main-green); color: white; border-radius: 50px; }
+        .buy-btn:hover { background: rgba(0, 255, 136, 0.3); }
+
+        /* ==========================================================================
+           10. DAILY REWARDS (Check In)
+           ========================================================================== */
+        .streak-display {
+            font-size: 120px; font-weight: 900; color: #ff8800; text-align: center; margin: 30px 0;
+            text-shadow: inset 0px 4px 10px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.2);
+            font-family: monospace;
+        }
+
+        /* ==========================================================================
+           11. WITHDRAWAL PIN SQUARES & AMOUNT BUTTONS
+           ========================================================================== */
+        .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .amt-btn {
+            background: rgba(10, 25, 50, 0.1); border: 2px solid var(--dark-blue-card); color: var(--dark-blue-card);
+            padding: 15px 0; border-radius: 10px; font-weight: 800; font-size: 16px; cursor: pointer; text-align: center; transition: 0.2s;
+        }
+        .amt-btn.selected { background: var(--dark-blue-card); color: white; }
+
+        .pin-container { display: flex; justify-content: center; gap: 8px; margin: 20px 0; }
+        .pin-box {
+            width: 45px; height: 55px; background: rgba(10,25,50,0.05); border: 2px solid rgba(10,25,50,0.2);
+            border-radius: 8px; text-align: center; font-size: 24px; font-weight: bold; color: #000;
+        }
+        .pin-box:focus { border-color: var(--dark-blue-card); outline: none; background: rgba(10,25,50,0.1); }
+
+        /* ==========================================================================
+           12. MODALS, TOASTS & SOCIAL
+           ========================================================================== */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0, 0.8); z-index: 2000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; }
+        .modal-overlay.show { display: flex; opacity: 1; }
+        .modal-content { background: #fff; color: #000; width: 90%; max-width: 420px; border-radius: var(--border-radius-lg); padding: 30px; text-align: center; position: relative; transform: scale(0.8); transition: all 0.3s; }
+        .modal-overlay.show .modal-content { transform: scale(1); }
+        .close-modal { position: absolute; top: 15px; right: 20px; color: #000; font-size: 28px; cursor: pointer; }
+
+        .social-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .social-btn {
+            background: rgba(10, 25, 50, 0.05); color: var(--dark-blue-card); text-decoration: none; padding: 12px;
+            border-radius: 8px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        #toast-container { position: fixed; top: 60px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 90%; max-width: 400px; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+        .toast { background: var(--dark-blue-card); color: white; padding: 15px 20px; border-radius: var(--border-radius-sm); display: flex; align-items: center; gap: 15px; border-left: 4px solid var(--main-green); font-size: 14px; font-weight: 600; }
+        .toast.error { border-left-color: var(--error-red); }
+        .toast.success { border-left-color: var(--success-green); }
+
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .crypto-tabs { display: flex; gap: 8px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+        .crypto-tab { background: #f0f0f0; border: 1px solid #ccc; color: #000; padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: bold; cursor: pointer; }
+        .crypto-tab.active { background: var(--dark-blue-card); color: #fff; }
     </style>
 </head>
 <body>
+
 <div id="toast-container"></div>
+
 <div id="app-container">
 
     <div id="login-view" class="view active">
         <div class="text-center">
             <h1 class="logo-title">Solar Energy</h1>
-
             <div class="auth-tabs-container">
                 <div class="auth-tab-btn inactive" onclick="appLogic.switchAuthView('register')" data-i18n="reg_tab">Register</div>
                 <div class="auth-tab-btn active" onclick="appLogic.switchAuthView('login')" data-i18n="log_tab">Login</div>
             </div>
-
-            <div class="lightning-container"></div>
         </div>
 
         <div class="form-group">
@@ -346,11 +371,12 @@
                     <select id="login-country-code">
                         <option value="+359" selected>+359 (Bulgaria 🇧🇬)</option>
                         <option value="+43">+43 (Austria 🇦🇹)</option>
-                        <option value="+32">+32 (Belgium 🇧🇪)</option>
+                        <option value="+44">+44 (UK 🇬🇧)</option>
+                        <option value="+1">+1 (USA 🇺🇸)</option>
                     </select>
                 </div>
                 <div class="input-wrapper phone-number">
-                    <i class="fas fa-phone-alt"></i>
+                    <div class="input-icon-box"><i class="fas fa-phone-alt"></i></div>
                     <input type="tel" id="login-phone" placeholder="871234567">
                 </div>
             </div>
@@ -359,7 +385,7 @@
         <div class="form-group">
             <label data-i18n="pass_lbl">Password</label>
             <div class="input-wrapper">
-                <i class="fas fa-lock"></i>
+                <div class="input-icon-box"><i class="fas fa-lock"></i></div>
                 <input type="password" id="login-password" placeholder="Enter password" style="padding-right: 30px;" data-i18n="pass_plc">
                 <i class="fas fa-eye toggle-password" onclick="appLogic.togglePassword('login-password', this)"></i>
             </div>
@@ -368,32 +394,21 @@
         <button class="btn" id="btn-login" onclick="appLogic.login()">
             <span data-i18n="log_btn">Влизане</span> <i class="fas fa-arrow-right"></i>
         </button>
-
-        <p id="forgot-pass-link" class="switch-link" style="margin-top: 15px; display: none;" onclick="appLogic.openForgotPassword()">Forgot password? <span>Reset it</span></p>
-
-        <div id="login-telegram-btn" style="display: none; margin-top: 15px;">
-            <button class="btn btn-outline" onclick="window.open('https://t.me/solarenergysupport', '_blank')">
-                <i class="fab fa-telegram-plane"></i> Chat with Support
-            </button>
-        </div>
     </div>
 
     <div id="register-view" class="view">
         <div class="text-center">
             <h1 class="logo-title">Solar Energy</h1>
-
             <div class="auth-tabs-container">
                 <div class="auth-tab-btn active" onclick="appLogic.switchAuthView('register')" data-i18n="reg_tab">Register</div>
                 <div class="auth-tab-btn inactive" onclick="appLogic.switchAuthView('login')" data-i18n="log_tab">Login</div>
             </div>
-
-            <div class="lightning-container"></div>
         </div>
 
         <div class="form-group">
             <label data-i18n="fname_lbl">Full Name</label>
             <div class="input-wrapper">
-                <i class="fas fa-user"></i>
+                <div class="input-icon-box"><i class="fas fa-user"></i></div>
                 <input type="text" id="reg-name" placeholder="John Doe">
             </div>
         </div>
@@ -405,7 +420,8 @@
                     <select id="reg-country-code">
                         <option value="+359" selected>+359 (Bulgaria 🇧🇬)</option>
                         <option value="+43">+43 (Austria 🇦🇹)</option>
-                        <option value="+32">+32 (Belgium 🇧🇪)</option>
+                        <option value="+44">+44 (UK 🇬🇧)</option>
+                        <option value="+1">+1 (USA 🇺🇸)</option>
                     </select>
                 </div>
                 <div class="input-wrapper phone-number">
@@ -415,9 +431,9 @@
         </div>
 
         <div class="form-group">
-            <label style="color: #000000;" data-i18n="inv_lbl">Invitation Code (Required)</label>
-            <div class="input-wrapper" style="border-color: rgba(18, 48, 92, 0.18);">
-                <i class="fas fa-ticket-alt"></i>
+            <label style="color: var(--dark-blue-card);" data-i18n="inv_lbl">Invitation Code (Required)</label>
+            <div class="input-wrapper">
+                <div class="input-icon-box" style="background:#000;"><i class="fas fa-ticket-alt"></i></div>
                 <input type="text" id="reg-invite" placeholder="Enter valid invitation code" data-i18n="inv_plc">
             </div>
         </div>
@@ -425,24 +441,24 @@
         <div class="form-group">
             <label data-i18n="pass_req_lbl">Password (6 to 12 characters)</label>
             <div class="input-wrapper">
-                <i class="fas fa-shield-alt"></i>
+                <div class="input-icon-box"><i class="fas fa-shield-alt"></i></div>
                 <input type="password" id="reg-password" placeholder="Create password" minlength="6" maxlength="12" style="padding-right: 30px;" data-i18n="pass_cre_plc">
                 <i class="fas fa-eye toggle-password" onclick="appLogic.togglePassword('reg-password', this)"></i>
             </div>
         </div>
-
+        
         <div class="form-group">
             <label data-i18n="conf_pass_lbl">Confirm Password</label>
             <div class="input-wrapper">
-                <i class="fas fa-shield-alt"></i>
+                <div class="input-icon-box"><i class="fas fa-shield-alt"></i></div>
                 <input type="password" id="reg-password-confirm" placeholder="Repeat password" minlength="6" maxlength="12" style="padding-right: 30px;" data-i18n="pass_rep_plc">
                 <i class="fas fa-eye toggle-password" onclick="appLogic.togglePassword('reg-password-confirm', this)"></i>
             </div>
         </div>
 
-        <div class="form-group" style="background: rgba(255,255,255,0.40); padding: 15px; border-radius: var(--border-radius-sm); border: 1px dashed rgba(18, 48, 92, 0.22);">
-            <label style="text-align: center; color: #000000;" data-i18n="hum_ver_lbl">Human Verification</label>
-            <p style="font-size: 11px; text-align: center; color: rgba(0,0,0,0.65); margin-bottom: 10px;" data-i18n="hum_ver_sub">Select the two identical objects (☀️) to continue.</p>
+        <div class="form-group" style="background: rgba(10,25,50,0.05); padding: 15px; border-radius: var(--border-radius-sm); border: 1px dashed var(--dark-blue-card);">
+            <label style="text-align: center;" data-i18n="hum_ver_lbl">Human Verification</label>
+            <p style="font-size: 11px; text-align: center; color: #555; margin-bottom: 10px;" data-i18n="hum_ver_sub">Select the two identical objects (☀️) to continue.</p>
             <div class="captcha-grid" id="captcha-container">
                 <div class="captcha-item" data-val="sun" onclick="appLogic.toggleCaptcha(this)">☀️</div>
                 <div class="captcha-item" data-val="moon" onclick="appLogic.toggleCaptcha(this)">🌙</div>
@@ -452,473 +468,309 @@
             <input type="hidden" id="captcha-passed" value="false">
         </div>
 
-        <button class="btn" id="btn-register" onclick="appLogic.register()">
-            <span data-i18n="reg_btn">Създай акаунт</span> <i class="fas fa-user-plus"></i>
+        <button class="btn btn-white" id="btn-register" onclick="appLogic.register()">
+            <span data-i18n="reg_btn">Създай Акаунт</span> <i class="fas fa-user-plus"></i>
         </button>
     </div>
-        <div id="dashboard-view" class="view">
-        <div class="dashboard-header" style="margin-top: 15px;">
-            <div class="dashboard-stats">
-                <div class="dash-stat-box">
-                    <p data-i18n="stat_inv">Investment</p>
-                    <h3><span id="dash-invest">0</span> <span style="font-size: 14px; color: var(--main-green);">USDT</span></h3>
+
+    <div id="dashboard-view" class="view">
+        <div class="dash-header-new">
+            <div class="avatar-trigger" onclick="appLogic.openAvatarModal()" id="user-avatar-display">
+                👨🏻‍💼
+            </div>
+            <div class="user-info-top">
+                <div id="top-phone" style="font-weight: 900; font-size: 18px; letter-spacing: 1px;">+35987****919</div>
+                <div style="font-size: 12px; font-weight: bold; color: #333; margin-top: 2px;">
+                    ID <span id="top-id" style="color:var(--dark-blue-card);"></span>
+                    <span id="top-package" style="margin-left: 8px; color: var(--dark-blue-card);"></span>
                 </div>
-                <div class="dash-stat-box">
-                    <p data-i18n="stat_prof">Total Profit</p>
-                    <h3><span id="dash-total">0</span> <span style="font-size: 14px; color: var(--main-green);">USDT</span></h3>
+            </div>
+        </div>
+
+        <div class="flip-card" id="dash-flip-card">
+            <div class="flip-card-inner" id="dash-card-inner">
+                <div class="flip-card-front">
+                    <span class="flip-withdrawal-btn" onclick="appLogic.navTo('wallet')">Withdrawal >></span>
+                    <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-gray); margin-bottom: 10px;">Available balance</p>
+                    <h2 style="font-size: 38px; font-weight: 900; margin: 0;"><span id="dash-balance">0.00</span> <span style="font-size: 16px; color: var(--main-green);">USDT</span></h2>
+                    <div class="flip-arrows" onclick="appLogic.flipCard()"><i class="fas fa-exchange-alt"></i></div>
                 </div>
-                <div class="dash-stat-box">
-                    <p data-i18n="stat_yest">Yesterday</p>
-                    <h3><span id="dash-yest">0</span> <span style="font-size: 14px; color: var(--main-green);">USDT</span></h3>
-                </div>
-                <div class="dash-stat-box">
-                    <p data-i18n="stat_tod">Today</p>
-                    <h3><span id="dash-today">0</span> <span style="font-size: 14px; color: var(--main-green);">USDT</span></h3>
+                <div class="flip-card-back">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 8px;">
+                        <span style="font-size: 12px; color: var(--text-gray);">INVESTMENT</span>
+                        <strong style="font-size: 14px;"><span id="dash-invest">0</span> USDT</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 8px;">
+                        <span style="font-size: 12px; color: var(--text-gray);">YESTERDAY</span>
+                        <strong style="font-size: 14px;"><span id="dash-yest">0.00</span> USDT</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-size: 12px; color: var(--text-gray);">TODAY</span>
+                        <strong style="font-size: 14px;"><span id="dash-today">0.00</span> USDT</strong>
+                    </div>
+                    <div class="flip-arrows" onclick="appLogic.flipCard()"><i class="fas fa-exchange-alt"></i></div>
                 </div>
             </div>
         </div>
 
         <div class="dashboard-grid">
             <div class="grid-item" onclick="appLogic.navTo('packages')">
-                <i class="fas fa-store"></i>
-                <span data-i18n="nav_shop">Store Packages</span>
+                <i class="fas fa-store"></i> <span data-i18n="nav_shop">Shop</span>
             </div>
             <div class="grid-item" onclick="appLogic.navTo('affiliate')">
-                <i class="fas fa-users"></i>
-                <span data-i18n="nav_team">My Team</span>
+                <i class="fas fa-users"></i> <span data-i18n="nav_team">My Team</span>
             </div>
-            <div class="grid-item" onclick="appLogic.openCalendarModal()">
-                <i class="fas fa-calendar-check"></i>
-                <span data-i18n="nav_rewards">Daily Rewards</span>
-            </div>
-            <div class="grid-item" onclick="appLogic.navTo('wallet')">
-                <i class="fas fa-wallet"></i>
-                <span data-i18n="nav_wallet">Wallet & Withdraw</span>
+            <div class="grid-item" onclick="appLogic.navTo('calendar')">
+                <i class="fas fa-calendar-check"></i> <span data-i18n="nav_rewards">Check In</span>
             </div>
             <div class="grid-item" onclick="appLogic.navTo('energy-plans')">
-                <i class="fas fa-bolt"></i>
-                <span data-i18n="nav_plans">Energy Income Plans</span>
+                <i class="fas fa-info-circle"></i> <span data-i18n="nav_plans">Information</span>
             </div>
-            <div class="grid-item" onclick="appLogic.navTo('profile')">
-                <i class="fas fa-user"></i>
-                <span data-i18n="nav_prof">Profile Settings</span>
-            </div>
-            <div class="grid-item" onclick="appLogic.secureLogout().catch(console.error)" style="border-left: 4px solid var(--error-red);">
-                <i class="fas fa-sign-out-alt" style="color: var(--error-red); filter: drop-shadow(0 0 5px rgba(255,51,102,0.4));"></i>
-                <span style="color: var(--error-red);" data-i18n="nav_log">Logout</span>
+            <div class="grid-item" onclick="appLogic.navTo('settings')">
+                <i class="fas fa-cog"></i> <span data-i18n="nav_prof">Settings</span>
             </div>
         </div>
     </div>
 
-    <div id="admin-view" class="view">
-        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> Exit Admin</button>
-        <div class="text-center" style="margin-bottom: 30px;">
-            <i class="fas fa-user-shield" style="font-size: 60px; color: var(--admin-color); margin-bottom: 15px; filter: drop-shadow(0 0 15px rgba(176,0,255,0.4));"></i>
-            <h2 style="color: var(--admin-color); margin-bottom: 5px; text-shadow: 0 0 10px rgba(176,0,255,0.3);">System Console</h2>
-            <p style="color: var(--text-gray); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Administrator Access Only</p>
-        </div>
-        
-        <div class="card card-admin" style="border-left: 4px solid var(--error-red);">
-            <h3 style="font-size: 18px; margin-bottom: 10px; color: white; text-transform: uppercase;">Withdrawals Control</h3>
-            <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">Lock all users from withdrawing.</p>
-            <button class="btn btn-admin" id="btn-freeze-toggle" style="background: linear-gradient(145deg, #dc3545, #a71d2a);" onclick="appLogic.adminToggleFreeze()">
-                <i class="fas fa-lock"></i> Lock Withdrawals
-            </button>
-        </div>
-
-        <div class="card card-admin" style="border-left: 4px solid var(--main-green);">
-            <h3 style="font-size: 18px; margin-bottom: 10px; color: white; text-transform: uppercase;">Flash Sale (50% OFF)</h3>
-            <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">Start or stop a 24-hour global promotion.</p>
-            <button class="btn btn-admin" id="btn-promo-toggle" style="background: linear-gradient(145deg, #28a745, #1e7e34);" onclick="appLogic.togglePromoAdmin()">
-                <i class="fas fa-bolt"></i> Start 24h Promo
-            </button>
-        </div>
-
-        <div class="card card-admin">
-            <h3 style="font-size: 18px; margin-bottom: 20px; color: white; text-transform: uppercase;">Manage User Account</h3>
-            
-            <div class="form-group">
-                <label style="color: var(--text-gray);">Target Phone Number (incl. code)</label>
-                <div class="input-wrapper admin-input">
-                    <i class="fas fa-search"></i>
-                    <input type="tel" id="admin-target-phone" placeholder="+359871234567">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label style="color: var(--text-gray);">Assign Package</label>
-                <div class="input-wrapper admin-input">
-                    <i class="fas fa-box"></i>
-                    <select id="admin-package-select">
-                        <option value="none">No Package (Reset)</option>
-                        <option value="Solar Start">Solar Start</option>
-                        <option value="Sun Basic">Sun Basic</option>
-                        <option value="Eco Plus">Eco Plus</option>
-                        <option value="Green Power">Green Power</option>
-                        <option value="Solar Prime">Solar Prime</option>
-                        <option value="Energy Pro">Energy Pro</option>
-                        <option value="Sun Elite">Sun Elite</option>
-                        <option value="Eco Platinum">Eco Platinum</option>
-                        <option value="Solar Infinity">Solar Infinity</option>
-                        <option value="Green Titan">Green Titan</option>
-                        <option value="Solar Legend">Solar Legend</option> 
-                        <option value="Custom Plan">Custom Plan</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label style="color: var(--text-gray);">Daily Profit Amount (USDT)</label>
-                <div class="input-wrapper admin-input">
-                    <strong style="color: var(--admin-color); margin-right: 12px; font-weight: 900;">USDT</strong>
-                    <input type="number" id="admin-custom-daily" placeholder="e.g. 59 (Overrides defaults)">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label style="color: var(--text-gray);">Total Investment Amount (USDT)</label>
-                <div class="input-wrapper admin-input">
-                    <strong style="color: var(--admin-color); margin-right: 12px; font-weight: 900;">USDT</strong>
-                    <input type="number" id="admin-custom-invest" placeholder="How much did they invest?">
-                </div>
-            </div>
-
-            <button class="btn btn-admin" onclick="appLogic.adminUpdateUser()">
-                <i class="fas fa-sync-alt"></i> Update User
-            </button>
-        </div>
-        
-        <div class="card card-admin">
-            <h3 style="font-size: 18px; margin-bottom: 20px; color: white; text-transform: uppercase;">Global Broadcast</h3>
-            <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">Send a popup message to all users instantly.</p>
-            
-            <div class="form-group">
-                <div class="input-wrapper admin-input" style="align-items: flex-start; padding-top: 12px;">
-                    <i class="fas fa-bullhorn" style="margin-top: 4px;"></i>
-                    <textarea id="admin-broadcast-msg" rows="3" placeholder="Type your message here..."></textarea>
-                </div>
-            </div>
-            
-            <button class="btn btn-admin" onclick="appLogic.sendBroadcast()">
-                <i class="fas fa-paper-plane"></i> Send to All Users
-            </button>
-        </div>
-    </div>
-
-    <div id="profile-view" class="view">
+    <div id="calendar-view" class="view">
         <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
-        <h2 class="text-center" style="margin-bottom: 25px; text-transform: uppercase;" data-i18n="prof_title">My Profile</h2>
+        <h2 class="text-center" style="color: var(--dark-blue-card); text-transform: uppercase;">Check In</h2>
+        
+        <div class="streak-display" id="ui-streak-days">0</div>
+        <p class="text-center" style="font-weight: bold; margin-bottom: 30px; font-size: 18px;">Days Checked In</p>
 
-        <div class="card card-admin" id="profile-admin-card" style="display: none; text-align: center; margin-bottom: 25px;">
-            <h4 style="font-size: 16px; margin-bottom: 10px; color: var(--admin-color); text-transform: uppercase; font-weight: 900;">
-                <i class="fas fa-user-shield"></i> System Console
-            </h4>
-            <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px; font-weight: bold;">Administrator privileges active.</p>
-            <button class="btn btn-admin" onclick="appLogic.openAdminFromProfile()">
-                Open Admin Panel <i class="fas fa-arrow-right"></i>
+        <button class="btn" id="btn-checkin" onclick="appLogic.checkIn()">
+            <i class="fas fa-check-square"></i> Register Now
+        </button>
+    </div>
+
+    <div id="wallet-view" class="view">
+        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
+        <h2 class="text-center" style="color: var(--dark-blue-card); margin-bottom: 20px; text-transform: uppercase;">Withdrawal</h2>
+
+        <div class="form-group">
+            <label>Select Amount (USDT)</label>
+            <div class="amount-grid">
+                <div class="amt-btn" onclick="appLogic.selectWithdrawAmt(10, this)">10</div>
+                <div class="amt-btn" onclick="appLogic.selectWithdrawAmt(50, this)">50</div>
+                <div class="amt-btn" onclick="appLogic.selectWithdrawAmt(100, this)">100</div>
+                <div class="amt-btn" onclick="appLogic.selectWithdrawAmt(200, this)">200</div>
+                <div class="amt-btn" onclick="appLogic.selectWithdrawAmt(500, this)">500</div>
+                <div class="amt-btn" onclick="appLogic.selectWithdrawAmt(1000, this)">1000</div>
+            </div>
+            <input type="hidden" id="selected-w-amount" value="">
+        </div>
+
+        <div class="form-group" style="margin-top: 30px;">
+            <label style="text-align: center;">Enter 6-Digit Withdrawal PIN</label>
+            <div class="pin-container">
+                <input type="password" maxlength="1" class="pin-box" id="pin1" onkeyup="appLogic.movePin(1, event)">
+                <input type="password" maxlength="1" class="pin-box" id="pin2" onkeyup="appLogic.movePin(2, event)">
+                <input type="password" maxlength="1" class="pin-box" id="pin3" onkeyup="appLogic.movePin(3, event)">
+                <input type="password" maxlength="1" class="pin-box" id="pin4" onkeyup="appLogic.movePin(4, event)">
+                <input type="password" maxlength="1" class="pin-box" id="pin5" onkeyup="appLogic.movePin(5, event)">
+                <input type="password" maxlength="1" class="pin-box" id="pin6" onkeyup="appLogic.movePin(6, event)">
+            </div>
+        </div>
+
+        <button class="btn" id="btn-withdraw" style="margin-top: 15px;" onclick="appLogic.withdraw()">
+            <i class="fas fa-arrow-up"></i> <span data-i18n="wall_req">Request Withdrawal</span>
+        </button>
+    </div>
+
+    <div id="packages-view" class="view">
+        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
+        <h2 class="text-center" style="color: var(--dark-blue-card); text-transform: uppercase; margin-bottom: 20px;">Shop</h2>
+        <div id="packages-container"></div>
+    </div>
+
+    <div id="affiliate-view" class="view">
+        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
+        <h2 class="text-center" style="color: var(--dark-blue-card); text-transform: uppercase;" data-i18n="team_title">Partner Program</h2>
+        
+        <div class="card" style="text-align: center; margin-top: 20px;">
+            <p style="font-size: 14px; margin-bottom: 20px; line-height: 1.6; font-weight: 600;" id="team_desc_i18n">
+                You will earn a <strong id="dynamic-commission-text" style="color: var(--main-green); font-size: 16px;">5%</strong> commission automatically!
+            </p>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: var(--border-radius-sm); margin-bottom: 20px;">
+                <p style="font-size: 11px; color: var(--text-gray); margin-bottom: 8px; text-transform: uppercase; font-weight: bold;" data-i18n="team_code">Your Invitation Code</p>
+                <h2 id="affiliate-code-display" style="letter-spacing: 4px; margin: 0; color: var(--main-green); font-size: 28px;">...</h2>
+            </div>
+            <button class="btn btn-outline" style="color: white; border-color: white;" onclick="appLogic.copyCode()">
+                <i class="fas fa-copy"></i> <span data-i18n="team_copy">Copy Code</span>
+            </button>
+        </div>
+
+        <div class="card" style="padding: 15px 22px;">
+            <h4 style="font-size: 15px; margin-bottom: 15px; color: var(--main-green); text-transform: uppercase; font-weight: 900;" data-i18n="team_mems">My Team Members</h4>
+            <div id="team-list">
+                <p style="color:white; font-size:12px; text-align:center; font-weight: bold;">Loading team data...</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="energy-plans-view" class="view">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <button class="back-btn" style="margin:0;" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
+            <button class="btn btn-outline" style="width: auto; padding: 8px 15px; font-size: 12px;" onclick="appLogic.openCalcModal()">
+                <i class="fas fa-calculator"></i> Calculator
             </button>
         </div>
         
-        <div class="text-center" style="margin-bottom: 25px;">
-            <div class="profile-avatar">
-                <i class="fas fa-user-astronaut"></i>
-            </div>
-            <h3 id="display-phone" style="letter-spacing: 2px; color: white; margin-bottom: 5px; font-size: 20px;"></h3>
-            <div style="margin-top: 15px;">
-                <span id="display-package-badge" class="badge badge-inactive">No Active Package</span>
+        <div class="card" style="padding: 20px;">
+            <h2 style="font-size: 22px; margin-bottom: 20px; color: white; text-align: center; font-weight: 900; text-transform: uppercase;">Information</h2>
+            <div style="overflow-x: auto; border-radius: 8px; background: rgba(0,0,0,0.3);">
+                <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; font-weight: 600; color: white;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 12px 8px; color: var(--main-green); border-bottom: 1px solid rgba(255,255,255,0.1);">Plan</th>
+                            <th style="padding: 12px 8px; color: var(--main-green); border-bottom: 1px solid rgba(255,255,255,0.1);">Price</th>
+                            <th style="padding: 12px 8px; color: var(--main-green); border-bottom: 1px solid rgba(255,255,255,0.1);">Daily</th>
+                        </tr>
+                    </thead>
+                    <tbody id="info-table-body">
+                        </tbody>
+                </table>
             </div>
         </div>
+    </div>
 
-        <div class="card" style="text-align: center;">
-            <h4 style="font-size: 16px; margin-bottom: 15px; color: var(--main-green); text-transform: uppercase; font-weight: 900;" data-i18n="prof_lang">Language / Език</h4>
-            <div class="input-wrapper" style="background: #040d06; padding: 0;">
-                <i class="fas fa-globe" style="padding-left: 15px;"></i>
-                <select id="app-lang-select" onchange="appLogic.changeLang(this.value)" style="width: 100%; background: transparent; border: none; color: white; outline: none; font-size: 15px; font-weight: 600; cursor: pointer; padding: 12px 15px;">
+    <div id="settings-view" class="view">
+        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
+        <h2 class="text-center" style="color: var(--dark-blue-card); text-transform: uppercase; margin-bottom: 25px;">Settings</h2>
+
+        <button class="btn btn-outline" id="admin-logout-btn" style="display:none; border-color: red; color: red; margin-bottom: 20px;" onclick="appLogic.secureLogout()">
+            <i class="fas fa-sign-out-alt"></i> Admin Logout
+        </button>
+        
+        <div class="form-group">
+            <label>Crypto Wallet Address (USDT)</label>
+            <div class="input-wrapper">
+                <div class="input-icon-box"><i class="fas fa-wallet"></i></div>
+                <input type="text" id="set-crypto-address" placeholder="Paste your address here">
+            </div>
+            <button class="btn" style="margin-top:10px; padding: 10px;" onclick="appLogic.saveCryptoAddress()">Save Address</button>
+        </div>
+
+        <div class="form-group" style="margin-top: 30px;">
+            <label>Security</label>
+            <button class="btn btn-outline" style="margin-bottom: 10px;" onclick="appLogic.setupPin()">
+                <i class="fas fa-key"></i> Setup Withdrawal PIN
+            </button>
+            <div class="input-wrapper" style="margin-bottom: 10px;">
+                <input type="password" id="prof-old-pass" placeholder="Current Password">
+            </div>
+            <div class="input-wrapper" style="margin-bottom: 10px;">
+                <input type="password" id="prof-new-pass" placeholder="New Password">
+            </div>
+            <button class="btn btn-outline" onclick="appLogic.changePassword()">
+                <i class="fas fa-sync-alt"></i> Update Password
+            </button>
+        </div>
+
+        <div class="form-group" style="margin-top: 30px;">
+            <label>Language</label>
+            <div class="input-wrapper">
+                <select id="app-lang-select" onchange="appLogic.changeLang(this.value)">
+                    <option value="en" selected>English</option>
                     <option value="bg">Български</option>
-                    <option value="en">English</option>
                     <option value="ru">Русский</option>
                     <option value="tr">Türkçe</option>
                 </select>
             </div>
         </div>
 
-        <div class="card" style="text-align: center;">
-            <h4 style="font-size: 16px; margin-bottom: 15px; color: var(--main-green); text-transform: uppercase; font-weight: 900;" data-i18n="prof_sec">Security Settings</h4>
-            <p style="font-size: 13px; color: var(--text-gray); margin-bottom: 20px; font-weight: 600;" data-i18n="prof_sec_sub">Set up a PIN code required for all withdrawals to keep your funds safe.</p>
-            <button class="btn btn-outline" onclick="appLogic.setupPin()">
-                <i class="fas fa-key"></i> <span data-i18n="prof_set_pin">Setup Withdrawal PIN</span>
-            </button>
-        </div>
-
-        <div class="card" style="text-align: center; margin-top: 15px;">
-            <h4 style="font-size: 16px; margin-bottom: 15px; color: var(--main-green); text-transform: uppercase; font-weight: 900;" data-i18n="prof_ch_pass">Change Password</h4>
-            <div class="input-wrapper" style="margin-bottom: 15px; background: #040d06;">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="prof-old-pass" placeholder="Current Password" style="padding-right:30px;" data-i18n="prof_cur_pass">
-                <i class="fas fa-eye toggle-password" onclick="appLogic.togglePassword('prof-old-pass', this)"></i>
+        <div class="form-group" style="margin-top: 40px; text-align: center;">
+            <label>Follow Us</label>
+            <div class="social-grid">
+                <a href="тук сложи линка" target="_blank" class="social-btn"><i class="fab fa-facebook" style="color:#1877F2; font-size:20px;"></i> Facebook</a>
+                <a href="тук сложи линка" target="_blank" class="social-btn"><i class="fab fa-instagram" style="color:#E4405F; font-size:20px;"></i> Instagram</a>
+                <a href="тук сложи линка" target="_blank" class="social-btn"><i class="fab fa-tiktok" style="color:#000; font-size:20px;"></i> TikTok</a>
+                <a href="тук сложи линка" target="_blank" class="social-btn"><i class="fab fa-telegram" style="color:#0088cc; font-size:20px;"></i> Telegram Group</a>
+                <a href="тук сложи линка" target="_blank" class="social-btn"><i class="fas fa-headset" style="color:#0088cc; font-size:20px;"></i> Telegram Support</a>
             </div>
-            <div class="input-wrapper" style="margin-bottom: 20px; background: #040d06;">
-                <i class="fas fa-shield-alt"></i>
-                <input type="password" id="prof-new-pass" placeholder="New Password" style="padding-right:30px;" data-i18n="prof_new_pass">
-                <i class="fas fa-eye toggle-password" onclick="appLogic.togglePassword('prof-new-pass', this)"></i>
-            </div>
-            <button class="btn btn-outline" onclick="appLogic.changePassword()">
-                <i class="fas fa-sync-alt"></i> <span data-i18n="prof_upd_pass">Update Password</span>
-            </button>
         </div>
     </div>
 
-    <div id="wallet-view" class="view">
-        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
-        
-        <div class="card text-center" style="padding: 30px 20px;">
-            <p class="stat-label" data-i18n="wall_bal">Total Available Balance</p>
-            <h1 style="font-size: 50px; margin: 15px 0; letter-spacing: -2px; font-weight: 900;">
-                <span id="wallet-balance">0.00</span> <span style="font-size: 16px; color: var(--main-green);">USDT</span>
-            </h1>
-            
-            <p id="withdrawal-fee-text" style="font-size: 13px; color: var(--error-red); margin-top: 20px; text-align: center; background: #040d06; padding: 12px; border-radius: 8px;">
-                <i class="fas fa-info-circle"></i> <span data-i18n="fee">Standard Withdrawal Fee: 10%</span>
-            </p>
-            
-            <p id="wallet-time-warning" style="display: block; font-size: 13px; color: var(--main-green); margin-top: 10px; text-align: center; background: #040d06; padding: 12px; border-radius: 8px;">
-                <i class="fas fa-clock"></i> <span data-i18n="time_warn">Withdrawals are allowed from 08:00 to 20:00 hours.</span>
-            </p>
+    <div id="avatar-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="appLogic.closeModal('avatar-modal')">&times;</span>
+            <h3 style="margin-bottom: 20px;">Select Avatar</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+                <div class="avatar-trigger" style="font-size:35px; border-color:#ccc;" onclick="appLogic.selectAvatar('👨🏻‍💼')">👨🏻‍💼</div>
+                <div class="avatar-trigger" style="font-size:35px; border-color:#ccc;" onclick="appLogic.selectAvatar('👨🏼‍💻')">👨🏼‍💻</div>
+                <div class="avatar-trigger" style="font-size:35px; border-color:#ccc;" onclick="appLogic.selectAvatar('🧔🏻‍♂️')">🧔🏻‍♂️</div>
+                <div class="avatar-trigger" style="font-size:35px; border-color:#ccc;" onclick="appLogic.selectAvatar('👩🏻‍💼')">👩🏻‍💼</div>
+                <div class="avatar-trigger" style="font-size:35px; border-color:#ccc;" onclick="appLogic.selectAvatar('👩🏼‍💻')">👩🏼‍💻</div>
+                <div class="avatar-trigger" style="font-size:35px; border-color:#ccc;" onclick="appLogic.selectAvatar('👱🏻‍♀️')">👱🏻‍♀️</div>
+            </div>
+        </div>
+    </div>
 
-            <div class="form-group" style="text-align: left; margin-top: 30px; margin-bottom: 15px;">
-                <label data-i18n="wall_amt">Amount to Withdraw (USDT)</label>
-                <div class="input-wrapper" style="background: #040d06;">
-                    <strong style="color: var(--main-green); margin-right: 12px;">USDT</strong>
-                    <select id="withdraw-amount" style="width: 100%; background: transparent; border: none; color: white; outline: none; font-size: 15px; font-weight: 600;">
-                        <option value="10">10 USDT</option>
-                        <option value="50">50 USDT</option>
-                        <option value="100">100 USDT</option>
-                        <option value="200">200 USDT</option>
-                        <option value="500">500 USDT</option>
-                        <option value="1000">1000 USDT</option>
-                        <option value="10000">10000 USDT</option>
+    <div id="calc-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="appLogic.closeModal('calc-modal')">&times;</span>
+            <h3 style="margin-bottom: 20px; color: var(--dark-blue-card);">Profit Calculator</h3>
+            
+            <div class="form-group">
+                <label>Investment Package</label>
+                <div class="input-wrapper admin-input">
+                    <select id="calc-pkg"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Period (Days)</label>
+                <div class="input-wrapper admin-input">
+                    <input type="number" id="calc-days" value="30">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Withdrawal Fee</label>
+                <div class="input-wrapper admin-input">
+                    <select id="calc-fee">
+                        <option value="0.10">10% (Standard)</option>
+                        <option value="0.05">5% (VIP)</option>
                     </select>
                 </div>
             </div>
-
-            <div class="form-group" style="text-align: left; margin-bottom: 25px;">
-                <label data-i18n="wall_addr">Withdrawal Address</label>
-                <div class="input-wrapper" style="background: #040d06;">
-                    <i class="fas fa-wallet"></i>
-                    <input type="text" id="withdraw-address" placeholder="Paste wallet address...">
-                </div>
-            </div>
-
-            <button class="btn" id="btn-withdraw" style="margin-top: 15px;" onclick="appLogic.withdraw()">
-                <i class="fas fa-arrow-up"></i> <span data-i18n="wall_req">Request Withdrawal</span>
-            </button>
+            <button class="btn" onclick="appLogic.calculateProfit()">Calculate</button>
             
-            <p style="font-size: 11px; color: var(--text-gray); margin-top: 15px; font-weight: 600;" data-i18n="min_wd">* Minimum withdrawal amount is 10 USDT</p>
-            
-            <p id="withdraw-success-msg" style="display: none; color: var(--success-green); font-size: 12px; margin-top: 10px; text-align: center;">
-                After a successful request, the funds will be transferred to your account within 2 hours
-            </p>
-        </div>
-    </div>
-
-    <div id="history-view" class="view">
-        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
-        <h2 class="text-center" style="text-transform: uppercase;" data-i18n="wall_hist">Transaction History</h2>
-        
-        <div class="card" style="padding: 15px 22px; margin-top: 20px;">
-            <div id="history-list"></div>
-        </div>
-    </div>
-
-    <div id="packages-view" class="view">
-        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
-        
-        <div id="promoBanner">
-            <h2>⚡ FLASH SALE -50% OFF ⚡</h2>
-            <div id="promoCountdown">00:00:00</div>
-        </div>
-
-        <div id="packages-container"></div>
-    </div>
-
-    <div id="affiliate-view" class="view">
-        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
-        <h2 class="text-center" style="text-transform: uppercase;" data-i18n="team_title">Partner Program</h2>
-        <p class="text-center text-gray" style="margin-bottom: 20px; font-weight: 600;" data-i18n="team_build">Build your team</p>
-        
-        <div class="level-banner">
-            <div class="level-title" data-i18n="team_stat">Current Status</div>
-            <div class="level-value" id="ui-team-level">LEVEL 1 (5%)</div>
-            <div class="level-subtitle" id="ui-team-next">Next level: 6 active partners</div>
-        </div>
-        
-        <div class="card" style="text-align: center; background: linear-gradient(135deg, var(--dark-green-light), var(--dark-green));">
-            <div style="width: 70px; height: 70px; background: linear-gradient(145deg, #102918, #06140a); border: 2px solid var(--main-green); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px auto;">
-                <i class="fas fa-network-wired" style="font-size: 32px; color: var(--main-green);"></i>
-            </div>
-            <p style="font-size: 14px; margin-bottom: 20px; line-height: 1.6; font-weight: 600;" id="team_desc_i18n">
-                You will earn a <strong id="dynamic-commission-text" style="color: var(--main-green); font-size: 16px;">5%</strong> commission automatically from the daily income of every team member!
-            </p>
-            <div style="background: #040d06; padding: 15px; border-radius: var(--border-radius-sm); margin-bottom: 20px;">
-                <p style="font-size: 11px; color: var(--text-gray); margin-bottom: 8px; text-transform: uppercase; font-weight: bold;" data-i18n="team_code">Your Invitation Code</p>
-                <h2 id="affiliate-code-display" style="letter-spacing: 4px; margin: 0; color: var(--main-green); font-size: 28px;">LOADING...</h2>
-            </div>
-            <button class="btn btn-outline" style="padding: 14px; font-size: 14px;" onclick="appLogic.copyCode()">
-                <i class="fas fa-copy"></i> <span data-i18n="team_copy">Copy Code</span>
-            </button>
-        </div>
-
-        <div class="card" style="margin-bottom: 20px;">
-            <h3 style="font-size: 16px; border-bottom: 1px solid rgba(0,255,136,0.1); padding-bottom: 12px; margin-bottom: 15px; color: var(--main-green); text-transform: uppercase;" data-i18n="team_lvl">Partnership Levels</h3>
-            
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <div style="background: linear-gradient(145deg, #0a1c11, #06140a); padding: 12px 15px; border-radius: var(--border-radius-sm); border-left: 3px solid var(--text-gray); display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <span style="color: var(--text-gray); font-size: 12px; font-weight: 800; text-transform: uppercase;">Level 1</span>
-                        <div style="color: white; font-size: 11px; margin-top: 3px;" data-i18n="lvl1_sub">0 - 5 active partners</div>
-                    </div>
-                    <div style="color: var(--main-green); font-size: 18px; font-weight: 900;">5%</div>
-                </div>
-
-                <div style="background: linear-gradient(145deg, #0a1c11, #06140a); padding: 12px 15px; border-radius: var(--border-radius-sm); border-left: 3px solid #00cc6a; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <span style="color: #00cc6a; font-size: 12px; font-weight: 800; text-transform: uppercase;">Level 2</span>
-                        <div style="color: white; font-size: 11px; margin-top: 3px;" data-i18n="lvl2_sub">6 - 49 active partners</div>
-                    </div>
-                    <div style="color: var(--main-green); font-size: 18px; font-weight: 900;">10%</div>
-                </div>
-
-                <div style="background: linear-gradient(145deg, #0a1c11, #06140a); padding: 12px 15px; border-radius: var(--border-radius-sm); border-left: 3px solid var(--main-green); display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <span style="color: var(--main-green); font-size: 12px; font-weight: 800; text-transform: uppercase;">Level 3</span>
-                        <div style="color: white; font-size: 11px; margin-top: 3px;" data-i18n="lvl3_sub">50+ active partners</div>
-                    </div>
-                    <div style="color: var(--main-green); font-size: 18px; font-weight: 900;">20%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3 style="font-size: 16px; border-bottom: 1px solid rgba(0,255,136,0.1); padding-bottom: 12px; margin-bottom: 15px; color: var(--main-green); text-transform: uppercase;" data-i18n="team_stats">Team Statistics</h3>
-            <div class="stat-box">
-                <div class="stat-item">
-                    <div class="stat-label" data-i18n="stat_dir">Total Direct Users</div>
-                    <div class="stat-value" id="affiliate-team-size">0</div> 
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label" data-i18n="stat_net">Network Status</div>
-                    <div class="stat-value" style="font-size: 16px; color: var(--success-green); margin-top: 15px;" data-i18n="stat_act">Active</div>
-                </div>
-            </div>
-            <div style="margin-top: 15px; padding: 18px; background: #040d06; border-radius: var(--border-radius-sm); text-align: center;">
-                <p id="team-earned-title" style="font-size: 12px; color: var(--text-gray); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Total earned from team (5% Bonus)</p>
-                <h3 style="margin: 8px 0 0 0; color: var(--main-green); font-size: 28px;"><span id="affiliate-earned">0.00</span> <span style="font-size: 16px;">USDT</span></h3>
-            </div>
-        </div>
-
-        <div class="card" style="padding: 15px 22px;">
-            <h4 style="font-size: 15px; margin-bottom: 15px; color: var(--main-green); text-transform: uppercase; font-weight: 900;" data-i18n="team_mems">My Team Members</h4>
-            <div id="team-list">
-                <p style="color:var(--text-gray); font-size:12px; text-align:center; font-weight: bold;">Loading team data...</p>
+            <div id="calc-result" style="margin-top: 20px; display: none; background: rgba(10,25,50,0.05); padding: 15px; border-radius: 8px; text-align: left;">
+                <p style="font-size: 12px; font-weight: bold; margin-bottom: 5px;">Gross Generated: <span id="calc-gross" style="float: right; color: var(--dark-blue-card);">0 USDT</span></p>
+                <p style="font-size: 12px; font-weight: bold; margin-bottom: 5px; color: red;">Withdrawal Fee: <span id="calc-fee-amt" style="float: right;">0 USDT</span></p>
+                <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 0;">
+                <p style="font-size: 14px; font-weight: 900; color: var(--success-green);">Net Withdrawn: <span id="calc-net" style="float: right;">0 USDT</span></p>
             </div>
         </div>
     </div>
-
-    <div id="energy-plans-view" class="view">
-        <button class="back-btn" onclick="appLogic.navTo('dashboard')"><i class="fas fa-arrow-left"></i> <span data-i18n="nav_dash">Dashboard</span></button>
-        <div class="table-container" style="display: block;">
-            <h2 class="table-title">Solar Energy</h2>
-            <div class="table-responsive">
-                <table class="energy-table">
-                    <thead>
-                        <tr>
-                            <th>Plan</th>
-                            <th>Price</th>
-                            <th>Daily Income</th>
-                            <th>Monthly Income</th>
-                            <th>Net Profit</th>
-                            <th>ROI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="row-dark"><td class="plan-name">SOLAR START</td><td>30 USDT</td><td>1.50 USDT</td><td>45 USDT</td><td>+15 USDT</td><td>20 days</td></tr>
-                        <tr class="row-light"><td class="plan-name">SUN BASIC</td><td>50 USDT</td><td>2.50 USDT</td><td>75 USDT</td><td>+25 USDT</td><td>20 days</td></tr>
-                        <tr class="row-dark"><td class="plan-name">ECO PLUS</td><td>100 USDT</td><td>5.00 USDT</td><td>150 USDT</td><td>+50 USDT</td><td>20 days</td></tr>
-                        <tr class="row-light"><td class="plan-name">GREEN POWER</td><td>150 USDT</td><td>7.50 USDT</td><td>225 USDT</td><td>+75 USDT</td><td>20 days</td></tr>
-                        <tr class="row-dark"><td class="plan-name">SOLAR PRIME</td><td>250 USDT</td><td>12.50 USDT</td><td>375 USDT</td><td>+125 USDT</td><td>20 days</td></tr>
-                        <tr class="row-light"><td class="plan-name">ENERGY PRO</td><td>400 USDT</td><td>24.00 USDT</td><td>720 USDT</td><td>+320 USDT</td><td>16.7 days</td></tr>
-                        <tr class="row-dark"><td class="plan-name">SUN ELITE</td><td>750 USDT</td><td>45.00 USDT</td><td>1350 USDT</td><td>+600 USDT</td><td>16.7 days</td></tr>
-                        <tr class="row-light"><td class="plan-name">ECO PLATINUM</td><td>1200 USDT</td><td>72.00 USDT</td><td>2160 USDT</td><td>+960 USDT</td><td>16.7 days</td></tr>
-                        <tr class="row-dark"><td class="plan-name">SOLAR INFINITY</td><td>1800 USDT</td><td>108.00 USDT</td><td>3240 USDT</td><td>+1440 USDT</td><td>16.7 days</td></tr>
-                        <tr class="row-light"><td class="plan-name">GREEN TITAN</td><td>3000 USDT</td><td>210.00 USDT</td><td>6300 USDT</td><td>+3300 USDT</td><td>14.3 days</td></tr>
-                        <tr class="row-ultimate"><td class="plan-name">SOLAR LEGEND</td><td>8000 USDT</td><td>640.00 USDT</td><td>19200 USDT</td><td>+11200 USDT</td><td>12.5 days</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
+    
     <div id="payment-modal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="appLogic.closeModal('payment-modal')">&times;</span>
             <div style="margin-bottom: 20px;">
-                <i class="fas fa-qrcode" style="font-size: 45px; color: var(--main-green); margin-bottom: 12px;"></i>
+                <i class="fas fa-qrcode" style="font-size: 45px; color: var(--dark-blue-card); margin-bottom: 12px;"></i>
                 <h3 style="margin-bottom: 5px; text-transform: uppercase;">Deposit to Invest</h3>
-                <p id="modal-pkg-name" style="color: var(--text-gray); font-size: 15px; font-weight: 800;">Package</p>
-                <input type="hidden" id="modal-pkg-raw-name">
+                <p id="modal-pkg-name" style="color: #555; font-size: 15px; font-weight: 800;">Package</p>
             </div>
-            
             <div class="crypto-tabs" id="crypto-tabs-container">
                 <div class="crypto-tab active" onclick="appLogic.selectCrypto('USDT_ERC20')">USDT (ERC20)</div>
-                <div class="crypto-tab" onclick="appLogic.selectCrypto('BTC')">BTC</div>
-                <div class="crypto-tab" onclick="appLogic.selectCrypto('ETH')">ETH</div>
                 <div class="crypto-tab" onclick="appLogic.selectCrypto('USDT_TRC20')">USDT (TRC20)</div>
             </div>
-
-            <div class="warning-text" id="modal-crypto-warning">
-                <i class="fas fa-exclamation-triangle" style="color: #030a05;"></i> Send strictly <strong>USDT (ERC20)</strong> to this address. Other assets will be lost.
+            <p style="font-size: 12px; font-weight: bold; margin-bottom: 15px;" id="modal-crypto-warning"></p>
+            <div style="background: white; padding: 10px; border-radius: 10px; display: inline-block; margin-bottom: 15px; border: 1px solid #ccc;">
+                <img id="modal-qr-img" style="width: 150px; height: 150px;" src="" alt="QR">
             </div>
-
-            <div style="background: white; padding: 12px; border-radius: 14px; display: inline-block; margin-bottom: 20px;">
-                <img id="modal-qr-img" class="qr-code" style="margin:0; width: 160px; height: 160px; box-shadow: none;" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=0x0f66Ac0f0D07Af0b444FF687Fb888eD8868d9173" alt="QR Code">
-            </div>
-            
-            <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 8px; text-transform: uppercase; font-weight: bold;">Official Deposit Address:</p>
-            <div class="wallet-address" id="wallet-address-text">
-                0x0f66Ac0f0D07Af0b444FF687Fb888eD8868d9173
-            </div>
-
-            <div style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 15px;">
-                <button class="btn btn-outline" style="width: 100%;" onclick="appLogic.copyAddress()"><i class="fas fa-copy"></i> Copy Address</button>
-            </div>
+            <div style="background: rgba(10,25,50,0.05); padding: 12px; border-radius: 8px; font-family: monospace; font-size: 12px; word-break: break-all; margin-bottom: 15px; font-weight: bold;" id="wallet-address-text"></div>
+            <button class="btn btn-outline" style="width: 100%;" onclick="appLogic.copyAddress()"><i class="fas fa-copy"></i> Copy Address</button>
         </div>
     </div>
 
-    <div id="calendar-modal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 900px; padding: 20px 30px;">
-            <span class="close-modal" onclick="appLogic.closeModal('calendar-modal')">&times;</span>
-            <h3 style="margin-bottom: 20px; color: var(--main-green); font-size: 24px; text-transform: uppercase;">365 Days Challenge</h3>
-            <p style="color: var(--text-gray); font-size: 13px; margin-bottom: 20px; font-weight: 700;">Check in daily to unlock rewards!</p>
-            
-            <div class="calendar-grid" id="calendar-grid"></div>
-            
-            <button class="btn" id="btn-checkin" onclick="appLogic.checkIn()">
-                <i class="fas fa-check-square"></i> Register Now
-            </button>
-            
-            <div class="rewards-text" style="margin-top: 20px; color: var(--text-light); background: #040d06; padding: 18px; border-radius: 10px;">
-                <p>💵 Log in for a total of 7 days to get 5USDT</p>
-                <p>📉 Log in for 40 days to get -5% withdrawal fee</p>
-                <p>☀️ Log in for 180 days to get free SOLAR START</p>
-                <p>📱 Log in for 365 days to get a new iPhone 17 Pro Max</p>
-            </div>
-        </div>
-    </div>
+</div>
+
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getDatabase, ref, set, get, onValue, update, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-    // Използваме конфигурацията за твоята база данни
     const firebaseConfig = {
         apiKey: "AIzaSyBMktDAVXxUgLbCyBiL9c_l6FDWQ8yqADc",
         authDomain: "energyonemilions.firebaseapp.com",
@@ -928,7 +780,6 @@
         appId: "1:1084198944849:web:57fc342554a08ed1dd3870",
         databaseURL: "https://energyonemilions-default-rtdb.europe-west1.firebasedatabase.app"
     };
-
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
@@ -938,819 +789,413 @@
     window.fget = get;
     window.fonValue = onValue;
     window.fupdate = update;
-    window.fpush = push;
+
+    const energyPackages = [
+        { id: 'solar_start', name: 'Solar Start', price: 30, daily: 1.5 },
+        { id: 'sun_basic', name: 'Sun Basic', price: 50, daily: 2.5 },
+        { id: 'eco_plus', name: 'Eco Plus', price: 100, daily: 5 },
+        { id: 'green_power', name: 'Green Power', price: 150, daily: 7.5 },
+        { id: 'solar_prime', name: 'Solar Prime', price: 250, daily: 12.5 },
+        { id: 'energy_pro', name: 'Energy Pro', price: 400, daily: 24 },
+        { id: 'sun_elite', name: 'Sun Elite', price: 750, daily: 45 },
+        { id: 'eco_platinum', name: 'Eco Platinum', price: 1200, daily: 72 },
+        { id: 'solar_infinity', name: 'Solar Infinity', price: 1800, daily: 108 },
+        { id: 'green_titan', name: 'Green Titan', price: 3000, daily: 210 },
+        { id: 'solar_legend', name: 'Solar Legend', price: 8000, daily: 640 }
+    ];
+
+    const appTranslations = {
+        en: {
+            reg_tab: "Register", log_tab: "Login", log_btn: "Login", reg_btn: "Create Account",
+            nav_shop: "Shop", nav_team: "My Team", nav_rewards: "Check In", nav_plans: "Information", nav_prof: "Settings", nav_dash: "Dashboard",
+            team_title: "Partner Program", team_copy: "Copy Code", team_code: "Your Invitation Code", team_mems: "My Team Members",
+            wall_req: "Request Withdrawal"
+        },
+        bg: {
+            reg_tab: "Регистрация", log_tab: "Вход", log_btn: "Влизане", reg_btn: "Създай Акаунт",
+            nav_shop: "Магазин", nav_team: "Екип", nav_rewards: "Check In", nav_plans: "Информация", nav_prof: "Настройки", nav_dash: "Табло",
+            team_title: "Партньорска Програма", team_copy: "Копирай Код", team_code: "Твоят Код", team_mems: "Моят Екип",
+            wall_req: "Заяви Теглене"
+        }
+    };
 
     const appLogic = {
         currentUserData: null,
         teamMembers: [],
-        withdrawalsFrozen: false,
-        withdrawalUnlocked: false,
-        liveUpdateTimer: null,
+        currentLang: 'en',
+        cryptoOptions: {
+            'USDT_ERC20': { address: '0x0f66Ac0f0D07Af0b444FF687Fb888eD8868d9173', warning: 'Send strictly USDT (ERC20) to this address.' },
+            'USDT_TRC20': { address: 'TJ5Zc4s7c5s5Gg5a4XmX2Q9gM6fW8YyZ', warning: 'Send strictly USDT (TRC20) to this address.' }
+        },
 
-        async init() {
-            const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            if (loggedIn) {
-                this.showMainApp();
-                this.loadLocalData();
+        init() {
+            this.currentLang = localStorage.getItem('app_lang') || 'en';
+            document.getElementById('app-lang-select').value = this.currentLang;
+            this.applyLanguage();
+            this.renderPackages();
+            this.populateCalcDropdown();
+
+            if(localStorage.getItem('isLoggedIn') === 'true') {
                 this.startDatabaseListener();
-                this.listenToWithdrawals();
-                this.listenToBroadcast();
+                this.showMainApp();
             }
         },
 
+        changeLang(lang) {
+            this.currentLang = lang;
+            localStorage.setItem('app_lang', lang);
+            this.applyLanguage();
+        },
+
+        applyLanguage() {
+            const t = appTranslations[this.currentLang] || appTranslations['en'];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.innerText = t[key];
+            });
+        },
+
+        showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div>${message}</div>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.animation = 'slideUpFade 0.4s reverse forwards';
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        },
+
+        switchAuthView(viewName) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(`${viewName}-view`).classList.add('active');
+        },
+
+        navTo(tabName) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(`${tabName}-view`).classList.add('active');
+        },
+
         showMainApp() {
-            document.getElementById('login-view').classList.remove('active');
-            document.getElementById('register-view').classList.remove('active');
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.getElementById('dashboard-view').classList.add('active');
         },
 
-        navTo(view) {
-            const views = document.querySelectorAll('.view');
-            views.forEach(v => v.classList.remove('active'));
-            const el = document.getElementById(view + '-view');
-            if (el) el.classList.add('active');
-        },
-
-        switchAuthView(view) {
-            document.getElementById('login-view').classList.toggle('active', view === 'login');
-            document.getElementById('register-view').classList.toggle('active', view === 'register');
-        },
-
         togglePassword(id, icon) {
-            const input = document.getElementById(id);
-            if (!input) return;
-            const isPassword = input.type === 'password';
-            input.type = isPassword ? 'text' : 'password';
-            icon.classList.toggle('fa-eye');
-            icon.classList.toggle('fa-eye-slash');
+            const el = document.getElementById(id);
+            if(el.type === 'password') { el.type = 'text'; icon.classList.replace('fa-eye', 'fa-eye-slash'); }
+            else { el.type = 'password'; icon.classList.replace('fa-eye-slash', 'fa-eye'); }
         },
 
         toggleCaptcha(el) {
             el.classList.toggle('selected');
-            const selected = document.querySelectorAll('#captcha-container .captcha-item.selected');
-            const values = [...selected].map(x => x.dataset.val);
-            const ok = values.length === 2 && values[0] === 'sun' && values[1] === 'sun';
-            document.getElementById('captcha-passed').value = ok ? 'true' : 'false';
-        },
-
-        validatePassword(pass) {
-            if (pass.length < 6 || pass.length > 12) {
-                this.showToast("Password must be 6 to 12 characters.", "error");
-                return false;
-            }
-            return true;
-        },
-
-        async login() {
-            const btn = document.getElementById('btn-login');
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
-            try {
-                const code = document.getElementById('login-country-code').value;
-                const phone = code + document.getElementById('login-phone').value.trim();
-                const password = document.getElementById('login-password').value;
-                const snap = await window.fget(window.fref(window.fdb, 'users'));
-                if (snap.exists()) {
-                    const all = snap.val();
-                    const entry = Object.entries(all).find(([, v]) => v.phone === phone);
-                    if (entry) {
-                        const [dbKey, data] = entry;
-                        if (data.password === password) {
-                            localStorage.setItem('isLoggedIn', 'true');
-                            localStorage.setItem('uid', dbKey);
-                            localStorage.setItem('userPhone', data.phone);
-                            localStorage.setItem('myCode', data.myCode);
-                            localStorage.setItem('userPass', password);
-
-                            this.showToast("Login successful!", "success");
-                            this.loadLocalData();
-                            this.startDatabaseListener();
-                            this.listenToWithdrawals();
-                            this.listenToBroadcast();
-                            this.showMainApp();
-                        } else {
-                            this.showToast("Incorrect password!", "error");
-                            document.getElementById('login-telegram-btn').style.display = 'block';
-                            const fpLink = document.getElementById('forgot-pass-link');
-                            if (fpLink) fpLink.style.display = 'block';
-                        }
-                    } else {
-                        this.showToast("User not found!", "error");
-                    }
+            const selected = document.querySelectorAll('.captcha-item.selected');
+            if (selected.length === 2) {
+                if (selected[0].dataset.val === 'sun' && selected[1].dataset.val === 'sun') {
+                    document.getElementById('captcha-passed').value = 'true';
+                } else {
+                    document.getElementById('captcha-passed').value = 'false';
+                    setTimeout(() => selected.forEach(i => i.classList.remove('selected')), 500);
                 }
-            } catch (error) {
-                this.showToast("Login error: " + error.message, "error");
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = `<span>Login Securely</span> <i class="fas fa-arrow-right"></i>`;
+            } else if (selected.length > 2) {
+                selected.forEach(i => i.classList.remove('selected'));
+                el.classList.add('selected');
             }
         },
 
-        forceLogout(msg) {
-            localStorage.clear();
-            this.showToast(msg, "error");
-            setTimeout(() => location.reload(), 1500);
+        flipCard() {
+            document.getElementById('dash-flip-card').classList.toggle('flipped');
         },
 
-        async secureLogout() {
-            if (!this.currentUserData) return;
-            const pass = prompt("SECURE LOGOUT\n\nPlease enter your login password to confirm logout:");
-            if (pass === null) return;
-            if (pass === this.currentUserData.password) {
-                localStorage.clear();
-                location.reload();
-            } else {
-                this.showToast("Incorrect password! Logout denied.", "error");
-            }
-        },
+        renderPackages() {
+            const shopContainer = document.getElementById('packages-container');
+            const infoContainer = document.getElementById('info-table-body');
+            if(shopContainer) shopContainer.innerHTML = '';
+            if(infoContainer) infoContainer.innerHTML = '';
 
-        loadLocalData() {
-            const phone = localStorage.getItem('userPhone') || '';
-            const code = localStorage.getItem('myCode') || '';
-            const p = document.getElementById('display-phone');
-            const a = document.getElementById('affiliate-code-display');
-            if (p) p.innerText = this.maskPhone(phone);
-            if (a) a.innerText = code;
+            energyPackages.forEach(pkg => {
+                // За Shop View
+                if(shopContainer) {
+                    shopContainer.innerHTML += `
+                        <div class="package-card">
+                            <div class="package-title">${pkg.name}</div>
+                            <div class="package-price">${pkg.price} USDT</div>
+                            <div class="package-details">
+                                <div><span style="color:#ccc; font-size:11px;">DAILY:</span> <strong>${pkg.daily} USDT</strong></div>
+                                <div><span style="color:#ccc; font-size:11px;">MONTHLY:</span> <strong>${pkg.daily * 30} USDT</strong></div>
+                            </div>
+                            <button class="btn buy-btn" onclick="appLogic.openPaymentModal('${pkg.name}', ${pkg.price})">
+                                INVEST NOW
+                            </button>
+                        </div>
+                    `;
+                }
+                // За Information View
+                if(infoContainer) {
+                    infoContainer.innerHTML += `
+                        <tr>
+                            <td style="padding:12px 8px; border-bottom:1px solid rgba(255,255,255,0.1); color:var(--main-green); font-weight:bold;">${pkg.name}</td>
+                            <td style="padding:12px 8px; border-bottom:1px solid rgba(255,255,255,0.1);">${pkg.price} USDT</td>
+                            <td style="padding:12px 8px; border-bottom:1px solid rgba(255,255,255,0.1);">${pkg.daily} USDT</td>
+                        </tr>
+                    `;
+                }
+            });
         },
 
         maskPhone(phone) {
-            if (!phone) return '';
-            return phone.slice(0, 4) + '****' + phone.slice(-3);
+            if(!phone) return "";
+            return phone.substring(0, 7) + "****" + phone.substring(phone.length - 3);
+        },
+
+        async register() {
+            const name = document.getElementById('reg-name').value;
+            const phone = document.getElementById('reg-country-code').value + document.getElementById('reg-phone').value.trim();
+            const inviteCode = document.getElementById('reg-invite').value.trim();
+            const pass = document.getElementById('reg-password').value;
+            const passConf = document.getElementById('reg-password-confirm').value;
+            const captcha = document.getElementById('captcha-passed').value;
+
+            if(!name || phone.length < 8 || !inviteCode || !pass) return this.showToast("Fill all fields!", "error");
+            if(pass !== passConf) return this.showToast("Passwords don't match!", "error");
+            if(captcha !== 'true') return this.showToast("Complete Human Verification!", "error");
+
+            const dbKey = phone.replace('+', '');
+            const generatedCode = 'EN' + Math.floor(Math.random()*9000 + 1000);
+
+            try {
+                const userRef = window.fref(window.fdb, 'users/' + dbKey);
+                await window.fset(userRef, {
+                    fullName: name, phone: phone, role: "user",
+                    inviteCodeUsed: inviteCode, myCode: generatedCode, password: pass,
+                    balance: 0, totalProfit: 0, activePackage: "none", dailyProfit: 0, checkInCount: 0,
+                    avatar: '👨🏻‍💼', cryptoAddress: '', createdAt: Date.now()
+                });
+                
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('uid', dbKey);
+                this.init();
+            } catch (e) { this.showToast("Error: " + e.message, "error"); }
+        },
+
+        async login() {
+            const phone = document.getElementById('login-country-code').value + document.getElementById('login-phone').value.trim();
+            const pass = document.getElementById('login-password').value;
+            if(!phone || !pass) return;
+
+            const dbKey = phone.replace('+', '');
+            try {
+                const snap = await window.fget(window.fref(window.fdb, 'users/' + dbKey));
+                if(snap.exists() && snap.val().password === pass) {
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('uid', dbKey);
+                    this.init();
+                } else { this.showToast("Invalid credentials", "error"); }
+            } catch (e) { this.showToast("Error: " + e.message, "error"); }
+        },
+
+        async secureLogout() {
+            localStorage.clear();
+            location.reload();
         },
 
         startDatabaseListener() {
             const uid = localStorage.getItem('uid');
-            const userPass = localStorage.getItem('userPass');
-            if (!uid) return;
-
-            window.fonValue(window.fref(window.fdb, 'settings/withdrawalsFrozen'), (snap) => {
-                this.withdrawalsFrozen = snap.exists() ? snap.val() : false;
-                const lockBtn = document.getElementById('btn-freeze-toggle');
-                if (lockBtn) {
-                    lockBtn.innerHTML = this.withdrawalsFrozen ? '<i class="fas fa-unlock"></i> Unlock Withdrawals' : '<i class="fas fa-lock"></i> Lock Withdrawals';
+            if(!uid) return;
+            window.fonValue(window.fref(window.fdb, 'users/' + uid), (snap) => {
+                if(snap.exists()) {
+                    this.currentUserData = snap.val();
+                    this.updateUI();
+                    this.loadTeamData(this.currentUserData.myCode);
                 }
             });
 
-            window.fonValue(window.fref(window.fdb, 'users/' + uid), (snapshot) => {
-                const data = snapshot.val();
-                if (!data || data.password !== userPass) {
-                    this.forceLogout("Session expired or password changed. Please log in again.");
-                    return;
-                }
-                this.currentUserData = data;
-                const adminCard = document.getElementById('profile-admin-card');
-                if (adminCard) adminCard.style.display = data.role === 'admin' ? 'block' : 'none';
-
-                let invest = data.investedAmount || 0;
-                const dashInvest = document.getElementById('dash-invest');
-                if (dashInvest) dashInvest.innerText = invest;
-
-                const pkgBadge = document.getElementById('display-package-badge');
-                if (pkgBadge) {
-                    if (data.activePackage && data.activePackage !== "none") {
-                        pkgBadge.className = 'badge badge-active';
-                        pkgBadge.innerHTML = `<i class="fas fa-bolt"></i> ${data.activePackage}`;
-                    } else {
-                        pkgBadge.className = 'badge badge-inactive';
-                        pkgBadge.innerText = 'No Active Package';
-                    }
-                }
-
-                this.verifyWithdrawalEligibility(data.myCode);
-                this.loadTeamData(data.myCode);
-            });
-
-            if (this.liveUpdateTimer) clearInterval(this.liveUpdateTimer);
-            this.liveUpdateTimer = setInterval(() => this.updateLiveDashboards(), 1000);
+            setInterval(() => this.calcLiveProfit(), 1000);
         },
 
-        async syncBalanceToDB() {
-            if (!this.currentUserData) return { newBalance: 0, newTotalProfit: 0 };
-            const uid = localStorage.getItem('uid');
+        updateUI() {
             const data = this.currentUserData;
-            const now = Date.now();
+            document.getElementById('top-phone').innerText = this.maskPhone(data.phone);
+            document.getElementById('top-id').innerText = data.myCode;
+            document.getElementById('user-avatar-display').innerText = data.avatar || '👨🏻‍💼';
+            document.getElementById('top-package').innerText = data.activePackage !== 'none' ? data.activePackage : '';
+            document.getElementById('affiliate-code-display').innerText = data.myCode;
+            document.getElementById('set-crypto-address').value = data.cryptoAddress || '';
+            document.getElementById('ui-streak-days').innerText = data.checkInCount || 0;
+
+            if(data.role === 'admin') {
+                document.getElementById('admin-logout-btn').style.display = 'inline-block';
+            }
+        },
+
+        calcLiveProfit() {
+            if(!this.currentUserData) return;
+            const data = this.currentUserData;
             const msInDay = 24 * 60 * 60 * 1000;
-            const dailyRate = parseFloat(data.dailyProfit || 0);
+            const now = Date.now();
+            let liveProfit = 0; let today = 0; let yest = 0; let invest = 0;
 
-            let liveProfit = 0;
-            let totalGenerated = 0;
-            if (data.activePackage && data.activePackage !== "none" && dailyRate > 0) {
-                const activatedAt = data.packageActivatedAt || data.createdAt || now;
-                const daysActive = Math.max(0, (now - activatedAt) / msInDay);
-                totalGenerated = daysActive * dailyRate;
-                liveProfit = Math.max(0, totalGenerated - parseFloat(data.syncedPackageProfit || 0));
+            if(data.activePackage !== 'none' && data.dailyProfit) {
+                invest = energyPackages.find(p => p.name === data.activePackage)?.price || 0;
+                const actAt = data.packageActivatedAt || data.createdAt;
+                liveProfit = Math.max(0, ((now - actAt) / msInDay) * data.dailyProfit);
+                
+                const startOfDay = new Date().setHours(0,0,0,0);
+                today = Math.max(0, ((now - Math.max(startOfDay, actAt)) / msInDay) * data.dailyProfit);
+                if(actAt < startOfDay) yest = data.dailyProfit;
             }
 
-            let activeTeamCount = 0;
-            this.teamMembers.forEach(m => { if (m.activePackage && m.activePackage !== "none") activeTeamCount++; });
+            let totalBal = parseFloat(data.balance || 0) + liveProfit;
+            document.getElementById('dash-balance').innerText = totalBal.toFixed(4);
+            document.getElementById('dash-invest').innerText = invest;
+            document.getElementById('dash-yest').innerText = yest.toFixed(2);
+            document.getElementById('dash-today').innerText = today.toFixed(4);
+        },
 
-            let teamPercent = 0.05;
-            if (activeTeamCount >= 50) teamPercent = 0.20;
-            else if (activeTeamCount >= 6) teamPercent = 0.10;
-
-            let totalTeamEarnings = 0;
-            this.teamMembers.forEach(member => {
-                const mDailyRate = parseFloat(member.dailyProfit || 0);
-                let mTotalGen = 0;
-                if (member.activePackage && member.activePackage !== "none" && mDailyRate > 0) {
-                    const mActivatedAt = member.packageActivatedAt || member.createdAt || now;
-                    mTotalGen = Math.max(0, (now - mActivatedAt) / msInDay) * mDailyRate;
+        async loadTeamData(myCode) {
+            const snap = await window.fget(window.fref(window.fdb, 'users'));
+            if(!snap.exists()) return;
+            const all = snap.val();
+            let teamHtml = ''; let active = 0;
+            
+            for(let key in all) {
+                if(all[key].inviteCodeUsed === myCode) {
+                    const u = all[key];
+                    if(u.activePackage !== 'none') active++;
+                    teamHtml += `<div style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1); color:white;">
+                        <span style="font-size:16px;">${u.avatar || '👨🏻‍💼'}</span> ${this.maskPhone(u.phone)} 
+                        <span style="float:right; color:var(--main-green); font-size:12px;">${u.activePackage !== 'none' ? u.activePackage : 'No Plan'}</span>
+                    </div>`;
                 }
-                const mUnsynced = Math.max(0, mTotalGen - parseFloat(member.syncedPackageProfit || 0));
-                totalTeamEarnings += (parseFloat(member.totalProfit || 0) + mUnsynced) * teamPercent;
-            });
-
-            const unsyncedTeamBonus = Math.max(0, totalTeamEarnings - parseFloat(data.lastSyncedTeamBonus || 0));
-            const newTotalProfit = parseFloat(data.totalProfit || 0) + liveProfit;
-            const newBalance = parseFloat(data.balance || 0) + liveProfit + unsyncedTeamBonus;
-
-            await window.fupdate(window.fref(window.fdb, 'users/' + uid), {
-                balance: newBalance,
-                totalProfit: newTotalProfit,
-                syncedPackageProfit: totalGenerated,
-                lastSyncedTeamBonus: totalTeamEarnings
-            });
-
-            return { newBalance, newTotalProfit };
-        },
-
-        listenToWithdrawals() {
-            const uid = localStorage.getItem('uid');
-            const wRef = window.fref(window.fdb, 'withdrawals');
-            window.fonValue(wRef, (snap) => {
-                const data = snap.val();
-                const list = document.getElementById('history-list');
-                if (!list) return;
-                list.innerHTML = '';
-                let count = 0;
-
-                if (data && this.currentUserData) {
-                    const checkIns = this.currentUserData.checkInCount || 0;
-                    const feePercent = checkIns >= 40 ? 0.05 : 0.10;
-                    const myWithdrawals = Object.values(data).filter(w => w.userKey === uid).reverse();
-
-                    myWithdrawals.forEach(w => {
-                        count++;
-                        const amount = parseFloat(w.amount);
-                        const fee = amount * feePercent;
-                        const net = amount - fee;
-                        const date = new Date(w.timestamp).toLocaleDateString();
-
-                        list.innerHTML += `
-                            <div class="history-item">
-                                <div style="display:flex; align-items:center; gap:12px;">
-                                    <div class="history-icon" style="background: linear-gradient(145deg, #102918, #06140a); color:var(--main-green); border: 1px solid rgba(0,255,136,0.2);">
-                                        <i class="fas fa-file-invoice-dollar"></i>
-                                    </div>
-                                    <div>
-                                        <div style="font-size: 14px; font-weight: 900; color: white;">Withdrawal</div>
-                                        <div style="font-size: 11px; color: var(--text-gray); font-weight: bold;">${date} • ${w.status.toUpperCase()}</div>
-                                    </div>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div style="font-size: 15px; font-weight: 900; color: white;">${net.toFixed(2)} USDT</div>
-                                    <div style="font-size: 11px; color: var(--error-red); font-weight: bold;">- ${fee.toFixed(2)} USDT (Fee)</div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                }
-
-                if (count === 0) list.innerHTML = '<p style="color:var(--text-gray); font-size:12px; text-align:center; font-weight: bold;">No transactions yet</p>';
-            });
-        },
-
-        async verifyWithdrawalEligibility(myCode) {
-            if (!myCode) return;
-            try {
-                const usersRef = window.fref(window.fdb, 'users');
-                const snap = await window.fget(usersRef);
-                let hasQualifiedReferral = false;
-                if (snap.exists()) {
-                    const allUsers = snap.val();
-                    for (let key in allUsers) {
-                        if (allUsers[key].inviteCodeUsed === myCode && allUsers[key].activePackage && allUsers[key].activePackage !== "none") {
-                            hasQualifiedReferral = true;
-                            break;
-                        }
-                    }
-                }
-                this.withdrawalUnlocked = hasQualifiedReferral;
-            } catch (e) {
-                console.error("Eligibility check failed:", e);
             }
-        },
-
-        async setupPin() {
-            const pin = prompt("Setup Security PIN\n\nPlease enter a 4-to-6 digit PIN code for protecting your withdrawals:");
-            if (!pin) return;
-            if (!/^\d{4,6}$/.test(pin)) return this.showToast("PIN must contain only numbers (4 to 6 digits).", "error");
-            const uid = localStorage.getItem('uid');
-            try {
-                await window.fupdate(window.fref(window.fdb, 'users/' + uid), { withdrawPin: pin });
-                this.showToast("Withdrawal PIN set successfully! Keep it safe.", "success");
-            } catch (e) {
-                this.showToast("Error setting PIN: " + e.message, "error");
-            }
-        },
-
-        async changePassword() {
-            const oldPass = document.getElementById('prof-old-pass').value;
-            const newPass = document.getElementById('prof-new-pass').value;
-            if (!oldPass || !newPass) return this.showToast("Please fill both password fields.", "error");
-            if (oldPass !== this.currentUserData.password) return this.showToast("Incorrect current password!", "error");
-            if (!this.validatePassword(newPass)) return;
-
-            const uid = localStorage.getItem('uid');
-            try {
-                await window.fupdate(window.fref(window.fdb, 'users/' + uid), { password: newPass });
-                this.currentUserData.password = newPass;
-                localStorage.setItem('userPass', newPass);
-                this.showToast("Password updated successfully!", "success");
-            } catch (e) {
-                this.showToast("Error updating password: " + e.message, "error");
-            }
-        },
-
-        async withdraw() {
-            if (this.withdrawalsFrozen) return this.showToast("Withdrawals are currently locked by the administrator.", "error");
-            const currentHour = new Date().getHours();
-            if (currentHour < 8 || currentHour >= 20) return this.showToast("Withdrawals are only allowed from 08:00 AM to 20:00 PM!", "error");
-            if (!this.currentUserData.withdrawPin) return this.showToast("SECURITY LOCK: Please set up your Withdrawal PIN from your Profile first.", "error");
-
-            const synced = await this.syncBalanceToDB();
-            const trueBalance = synced.newBalance;
-            const withdrawAmount = parseFloat(document.getElementById('withdraw-amount').value);
-            const withdrawAddress = document.getElementById('withdraw-address').value.trim();
-            const uid = localStorage.getItem('uid');
-            const phone = localStorage.getItem('userPhone');
-
-            if (trueBalance < 10) return this.showToast("Minimum withdrawal is 10 USDT. Insufficient balance.", "error");
-            if (withdrawAmount > trueBalance) return this.showToast("Insufficient balance for this amount!", "error");
-            if (!this.withdrawalUnlocked) return this.showToast("Withdrawal Locked: You must invite at least 1 person who purchases an active package.", "error");
-            if (!withdrawAddress) return this.showToast("Please enter your withdrawal address.", "error");
-
-            try {
-                await window.fpush(window.fref(window.fdb, 'withdrawals'), {
-                    userKey: uid,
-                    phone,
-                    amount: withdrawAmount,
-                    address: withdrawAddress,
-                    status: 'pending',
-                    timestamp: Date.now()
-                });
-                this.showToast("Withdrawal request submitted successfully!", "success");
-                const msg = document.getElementById('withdraw-success-msg');
-                if (msg) msg.style.display = 'block';
-            } catch (e) {
-                this.showToast("Withdrawal failed: " + e.message, "error");
-            }
+            if(!teamHtml) teamHtml = '<p style="color:white; text-align:center;">No registered members yet</p>';
+            document.getElementById('team-list').innerHTML = teamHtml;
         },
 
         async checkIn() {
-            const now = Date.now();
-            const ms24h = 24 * 60 * 60 * 1000;
-            const lastCheckIn = this.currentUserData.lastCheckIn || 0;
-            const nextAvailable = lastCheckIn + ms24h;
-            if (now < nextAvailable && lastCheckIn !== 0) return this.showToast("You can only check in once every 24 hours.", "error");
+            if(!this.currentUserData) return;
+            const count = (this.currentUserData.checkInCount || 0) + 1;
+            await window.fupdate(window.fref(window.fdb, 'users/' + localStorage.getItem('uid')), { checkInCount: count, lastCheckIn: Date.now() });
+            this.showToast("Checked in successfully!", "success");
+        },
 
-            let streak = this.currentUserData.consecutiveDays || 0;
-            if (lastCheckIn === 0 || now <= nextAvailable + ms24h) streak++;
-            else streak = 1;
+        openAvatarModal() {
+            document.getElementById('avatar-modal').style.display = 'flex';
+            setTimeout(() => document.getElementById('avatar-modal').classList.add('show'), 10);
+        },
+        async selectAvatar(emoji) {
+            await window.fupdate(window.fref(window.fdb, 'users/' + localStorage.getItem('uid')), { avatar: emoji });
+            this.closeModal('avatar-modal');
+        },
 
-            const totalCheckIns = (this.currentUserData.checkInCount || 0) + 1;
-            const uid = localStorage.getItem('uid');
-            const updates = { checkInCount: totalCheckIns, lastCheckIn: now, consecutiveDays: streak };
-            const synced = await this.syncBalanceToDB();
-            let message = `Check-in successful! Current Streak: ${streak} days.`;
+        // CALCULATOR LOGIC
+        populateCalcDropdown() {
+            const select = document.getElementById('calc-pkg');
+            if(!select) return;
+            select.innerHTML = '';
+            energyPackages.forEach(p => {
+                select.innerHTML += `<option value="${p.daily}">${p.name} (${p.daily} / day)</option>`;
+            });
+        },
+        openCalcModal() {
+            document.getElementById('calc-modal').style.display = 'flex';
+            setTimeout(() => document.getElementById('calc-modal').classList.add('show'), 10);
+        },
+        calculateProfit() {
+            const daily = parseFloat(document.getElementById('calc-pkg').value);
+            const days = parseInt(document.getElementById('calc-days').value);
+            const feePercent = parseFloat(document.getElementById('calc-fee').value);
+            
+            if(!days || days < 1) return;
+            const gross = daily * days;
+            const fee = gross * feePercent;
+            const net = gross - fee;
 
-            if (streak === 7) {
-                updates.balance = synced.newBalance + 5;
-                updates.totalProfit = synced.newTotalProfit + 5;
-                updates.consecutiveDays = 0;
-                message = "Reward Unlocked: 5 USDT added to your balance for 7-day streak!";
-            } else if (totalCheckIns === 40) {
-                message = "Reward Unlocked: Withdrawal fee reduced to 5%!";
-            } else if (totalCheckIns === 180) {
-                updates.activePackage = "VIP 1";
-                updates.dailyProfit = 59;
-                updates.packageActivatedAt = now;
-                updates.syncedPackageProfit = 0;
-                message = "Reward Unlocked: Free VIP 1 Activated!";
-            } else if (totalCheckIns === 365) {
-                message = "JACKPOT! Please contact support to claim your iPhone 17 Pro Max!";
+            document.getElementById('calc-gross').innerText = gross.toFixed(2) + " USDT";
+            document.getElementById('calc-fee-amt').innerText = fee.toFixed(2) + " USDT";
+            document.getElementById('calc-net').innerText = net.toFixed(2) + " USDT";
+            document.getElementById('calc-result').style.display = 'block';
+        },
+
+        // WITHDRAWAL LOGIC
+        selectWithdrawAmt(amt, el) {
+            document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('selected-w-amount').value = amt;
+        },
+        movePin(num, e) {
+            if (e.key >= '0' && e.key <= '9') {
+                if (num < 6) document.getElementById('pin' + (num + 1)).focus();
+            } else if (e.key === 'Backspace') {
+                if (num > 1) document.getElementById('pin' + (num - 1)).focus();
             }
+        },
+        async withdraw() {
+            const amt = document.getElementById('selected-w-amount').value;
+            if(!amt) return this.showToast("Select amount first", "error");
+            
+            let pinStr = '';
+            for(let i=1; i<=6; i++) pinStr += document.getElementById('pin'+i).value;
+            if(pinStr.length < 6) return this.showToast("Enter 6-digit PIN", "error");
 
-            try {
-                await window.fupdate(window.fref(window.fdb, 'users/' + uid), updates);
-                this.showToast(message, "success");
-            } catch (error) {
-                this.showToast("Failed to check in: " + error.message, "error");
+            if(pinStr !== this.currentUserData.withdrawPin) return this.showToast("Incorrect PIN!", "error");
+            if(!this.currentUserData.cryptoAddress || this.currentUserData.cryptoAddress.length < 10) return this.showToast("Please set your Crypto Address in Settings first!", "error");
+            
+            this.showToast("Withdraw request submitted successfully!", "success");
+            // Нулиране на полетата
+            for(let i=1; i<=6; i++) document.getElementById('pin'+i).value = '';
+            document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('selected'));
+        },
+
+        async saveCryptoAddress() {
+            const addr = document.getElementById('set-crypto-address').value.trim();
+            if(addr.length < 15) return this.showToast("Invalid address length", "error");
+            await window.fupdate(window.fref(window.fdb, 'users/' + localStorage.getItem('uid')), { cryptoAddress: addr });
+            this.showToast("Crypto Address Saved!", "success");
+        },
+
+        async setupPin() {
+            const pin = prompt("Enter new 6-digit PIN:");
+            if(pin && pin.length === 6) {
+                await window.fupdate(window.fref(window.fdb, 'users/' + localStorage.getItem('uid')), { withdrawPin: pin });
+                this.showToast("PIN Saved!", "success");
+            } else {
+                this.showToast("Must be exactly 6 digits.", "error");
             }
         },
 
-        openForgotPassword() {
-            const overlay = document.getElementById('forgot-password-modal');
-            overlay.style.display = 'flex';
-            setTimeout(() => overlay.classList.add('show'), 10);
+        // PAYMENT / MODALS
+        openPaymentModal(pkgName, price) {
+            document.getElementById('modal-pkg-name').innerText = `${pkgName} - ${price} USDT`;
+            this.selectCrypto('USDT_ERC20');
+            document.getElementById('payment-modal').style.display = 'flex';
+            setTimeout(() => document.getElementById('payment-modal').classList.add('show'), 10);
         },
-
-        async submitForgotPassword() {
-            const phone = document.getElementById('forgot-phone').value.trim();
-            const msg = document.getElementById('forgot-msg').value.trim();
-            const btn = document.getElementById('btn-forgot');
-
-            if (!phone || !msg) return this.showToast("Please provide your phone and a message.", "error");
-
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-            try {
-                await window.fpush(window.fref(window.fdb, 'support_messages'), {
-                    type: "password_reset",
-                    phone,
-                    message: msg,
-                    timestamp: Date.now(),
-                    status: "unread"
-                });
-                this.showToast("Message sent! Support will contact you shortly.", "success");
-                this.closeModal('forgot-password-modal');
-            } catch (e) {
-                this.showToast("Error sending message: " + e.message, "error");
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send to Support';
-            }
+        selectCrypto(type) {
+            const data = this.cryptoOptions[type];
+            document.querySelectorAll('.crypto-tab').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.crypto-tab[onclick*="${type}"]`).classList.add('active');
+            document.getElementById('modal-crypto-warning').innerText = data.warning;
+            document.getElementById('wallet-address-text').innerText = data.address;
+            document.getElementById('modal-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data.address}`;
         },
-
         closeModal(id) {
-            const overlay = document.getElementById(id);
-            if (!overlay) return;
-            overlay.classList.remove('show');
-            setTimeout(() => overlay.style.display = 'none', 200);
+            const el = document.getElementById(id);
+            if(el) { el.classList.remove('show'); setTimeout(() => el.style.display = 'none', 300); }
         },
-
-        showToast(msg, type) {
-            const c = document.getElementById('toast-container');
-            const el = document.createElement('div');
-            el.className = `toast ${type || ''}`;
-            el.innerHTML = `<i class="fas fa-info-circle"></i><div>${msg}</div>`;
-            c.appendChild(el);
-            setTimeout(() => el.remove(), 3000);
+        copyAddress() {
+            navigator.clipboard.writeText(document.getElementById('wallet-address-text').innerText);
+            this.showToast("Address Copied", "success");
+        },
+        copyCode() {
+            navigator.clipboard.writeText(document.getElementById('affiliate-code-display').innerText);
+            this.showToast("Code Copied", "success");
         }
     };
 
     window.appLogic = appLogic;
-    document.addEventListener('DOMContentLoaded', () => window.appLogic.init());
+    document.addEventListener('DOMContentLoaded', () => appLogic.init());
 </script>
 </body>
 </html>
-        async openCalendarModal() {
-            const overlay = document.getElementById('calendar-modal');
-            if (!overlay) return;
-            overlay.style.display = 'flex';
-            setTimeout(() => overlay.classList.add('show'), 10);
-        },
-
-        async closeCalendarModal() {
-            this.closeModal('calendar-modal');
-        },
-
-        async updateLiveDashboards() {
-            if (!this.currentUserData) return;
-
-            const now = Date.now();
-            const msInDay = 24 * 60 * 60 * 1000;
-            const data = this.currentUserData;
-
-            let packageProfit = 0;
-            if (data.activePackage && data.activePackage !== 'none' && data.dailyProfit) {
-                const activatedAt = data.packageActivatedAt || data.createdAt || now;
-                const daysActive = Math.max(0, (now - activatedAt) / msInDay);
-                const totalGenerated = daysActive * parseFloat(data.dailyProfit || 0);
-                packageProfit = Math.max(0, totalGenerated - parseFloat(data.syncedPackageProfit || 0));
-            }
-
-            let teamProfit = 0;
-            let activeTeamCount = 0;
-            this.teamMembers.forEach(m => {
-                if (m.activePackage && m.activePackage !== 'none') activeTeamCount++;
-            });
-
-            let teamPercent = 0.05;
-            if (activeTeamCount >= 50) teamPercent = 0.20;
-            else if (activeTeamCount >= 6) teamPercent = 0.10;
-
-            this.teamMembers.forEach(member => {
-                const mDaily = parseFloat(member.dailyProfit || 0);
-                if (!mDaily || !member.activePackage || member.activePackage === 'none') return;
-
-                const activatedAt = member.packageActivatedAt || member.createdAt || now;
-                const daysActive = Math.max(0, (now - activatedAt) / msInDay);
-                const totalGenerated = daysActive * mDaily;
-                const currentMemberProfit = Math.max(0, totalGenerated - parseFloat(member.syncedPackageProfit || 0));
-                teamProfit += (parseFloat(member.totalProfit || 0) + currentMemberProfit) * teamPercent;
-            });
-
-            const currentBalance = parseFloat(data.balance || 0);
-            const totalProfit = parseFloat(data.totalProfit || 0) + packageProfit + teamProfit;
-
-            const yesterday = packageProfit * 0.45;
-            const today = packageProfit * 0.55;
-
-            const dashTotal = document.getElementById('dash-total');
-            const dashYest = document.getElementById('dash-yest');
-            const dashToday = document.getElementById('dash-today');
-            const walletBalance = document.getElementById('wallet-balance');
-            const affiliateEarned = document.getElementById('affiliate-earned');
-
-            if (dashTotal) dashTotal.innerText = totalProfit.toFixed(2);
-            if (dashYest) dashYest.innerText = yesterday.toFixed(2);
-            if (dashToday) dashToday.innerText = today.toFixed(2);
-            if (walletBalance) walletBalance.innerText = currentBalance.toFixed(2);
-            if (affiliateEarned) affiliateEarned.innerText = teamProfit.toFixed(2);
-
-            const levelTitle = document.getElementById('ui-team-level');
-            const levelNext = document.getElementById('ui-team-next');
-            const teamDesc = document.getElementById('dynamic-commission-text');
-            const teamEarnTitle = document.getElementById('team-earned-title');
-
-            if (levelTitle && levelNext && teamDesc && teamEarnTitle) {
-                if (activeTeamCount >= 50) {
-                    levelTitle.innerText = 'LEVEL 3 (20%)';
-                    levelNext.innerText = 'Max level reached';
-                    teamDesc.innerText = '20%';
-                    teamEarnTitle.innerText = 'Total earned from team (20% Bonus)';
-                } else if (activeTeamCount >= 6) {
-                    levelTitle.innerText = 'LEVEL 2 (10%)';
-                    levelNext.innerText = 'Next level: 50 active partners';
-                    teamDesc.innerText = '10%';
-                    teamEarnTitle.innerText = 'Total earned from team (10% Bonus)';
-                } else {
-                    levelTitle.innerText = 'LEVEL 1 (5%)';
-                    levelNext.innerText = 'Next level: 6 active partners';
-                    teamDesc.innerText = '5%';
-                    teamEarnTitle.innerText = 'Total earned from team (5% Bonus)';
-                }
-            }
-        },
-
-        async copyCode() {
-            const code = localStorage.getItem('myCode') || '';
-            try {
-                await navigator.clipboard.writeText(code);
-                this.showToast('Invitation code copied!', 'success');
-            } catch (e) {
-                this.showToast('Copy failed.', 'error');
-            }
-        },
-
-        async adminToggleFreeze() {
-            try {
-                const newState = !this.withdrawalsFrozen;
-                await window.fset(window.fref(window.fdb, 'settings/withdrawalsFrozen'), newState);
-                this.showToast(newState ? 'All withdrawals are now LOCKED!' : 'Withdrawals are UNLOCKED!', 'success');
-            } catch (e) {
-                this.showToast('Error toggling freeze: ' + e.message, 'error');
-            }
-        },
-
-        async togglePromoAdmin() {
-            try {
-                if (this.isPromoActive) {
-                    await window.fset(window.fref(window.fdb, 'settings/promo'), { isActive: false, endTime: 0 });
-                    this.showToast('Flash Sale stopped!', 'success');
-                } else {
-                    const endTime = Date.now() + (24 * 60 * 60 * 1000);
-                    await window.fset(window.fref(window.fdb, 'settings/promo'), { isActive: true, endTime });
-                    this.showToast('Flash Sale started for 24 hours!', 'success');
-                }
-            } catch (e) {
-                this.showToast('Promo toggle failed: ' + e.message, 'error');
-            }
-        },
-
-        async adminUpdateUser() {
-            const phone = document.getElementById('admin-target-phone').value.trim();
-            const pkg = document.getElementById('admin-package-select').value;
-            const daily = parseFloat(document.getElementById('admin-custom-daily').value || 0);
-            const invest = parseFloat(document.getElementById('admin-custom-invest').value || 0);
-
-            if (!phone) return this.showToast('Enter target phone number.', 'error');
-
-            try {
-                const snap = await window.fget(window.fref(window.fdb, 'users'));
-                if (!snap.exists()) return this.showToast('No users found.', 'error');
-
-                const all = snap.val();
-                const entry = Object.entries(all).find(([, u]) => u.phone === phone);
-                if (!entry) return this.showToast('User not found.', 'error');
-
-                const [uid, data] = entry;
-                const updates = {
-                    activePackage: pkg,
-                    updatedAt: Date.now()
-                };
-
-                if (!isNaN(daily) && daily > 0) updates.dailyProfit = daily;
-                if (!isNaN(invest) && invest >= 0) updates.investedAmount = invest;
-                if (pkg === 'none') {
-                    updates.dailyProfit = 0;
-                    updates.syncedPackageProfit = 0;
-                }
-
-                await window.fupdate(window.fref(window.fdb, 'users/' + uid), updates);
-                this.showToast('User updated successfully!', 'success');
-            } catch (e) {
-                this.showToast('Update failed: ' + e.message, 'error');
-            }
-        },
-
-        async sendBroadcast() {
-            const msg = document.getElementById('admin-broadcast-msg').value.trim();
-            if (!msg) return this.showToast('Enter a broadcast message.', 'error');
-
-            try {
-                await window.fpush(window.fref(window.fdb, 'broadcasts'), {
-                    message: msg,
-                    timestamp: Date.now(),
-                    status: 'active'
-                });
-                document.getElementById('admin-broadcast-msg').value = '';
-                this.showToast('Broadcast sent to all users!', 'admin-msg');
-            } catch (e) {
-                this.showToast('Broadcast failed: ' + e.message, 'error');
-            }
-        },
-
-        listenToBroadcast() {
-            const refPath = window.fref(window.fdb, 'broadcasts');
-            window.fonValue(refPath, (snap) => {
-                const data = snap.val();
-                if (!data) return;
-
-                const all = Object.values(data);
-                const latest = all.reverse().find(x => x.status === 'active');
-                if (!latest) return;
-
-                if (this.lastBroadcastTs === latest.timestamp) return;
-                this.lastBroadcastTs = latest.timestamp;
-
-                this.showToast(latest.message, 'admin-msg');
-            });
-        },
-
-        listenToPromo() {
-            const refPath = window.fref(window.fdb, 'settings/promo');
-            window.fonValue(refPath, (snap) => {
-                const val = snap.val() || {};
-                this.isPromoActive = !!val.isActive;
-                const promoBanner = document.getElementById('promoBanner');
-                const countdown = document.getElementById('promoCountdown');
-                if (!promoBanner || !countdown) return;
-
-                if (!this.isPromoActive || !val.endTime) {
-                    promoBanner.style.display = 'none';
-                    return;
-                }
-
-                promoBanner.style.display = 'block';
-                const tick = () => {
-                    const diff = Math.max(0, val.endTime - Date.now());
-                    const h = String(Math.floor(diff / 3600000)).padStart(2, '0');
-                    const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-                    const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-                    countdown.innerText = `${h}:${m}:${s}`;
-                    if (diff <= 0) {
-                        promoBanner.style.display = 'none';
-                    }
-                };
-                tick();
-                if (this.promoTimer) clearInterval(this.promoTimer);
-                this.promoTimer = setInterval(tick, 1000);
-            });
-        },
-
-        getTrans(key) {
-            const lang = localStorage.getItem('lang') || 'en';
-            const dict = {
-                bg: {
-                    log_btn: 'Вход',
-                    reg_btn: 'Регистрация',
-                    err_frozen: 'Тегленията са заключени от администратора.',
-                    err_time: 'Тегленията са разрешени само между 08:00 и 20:00.',
-                    err_pin: 'Моля, настройте Withdrawal PIN от профила си.',
-                    err_min_10: 'Минималното теглене е 10 USDT.',
-                    err_funds: 'Нямате достатъчно баланс.',
-                    err_invite: 'Тегленето е заключено: поканете поне 1 човек с активен пакет.'
-                },
-                en: {
-                    log_btn: 'Login Securely',
-                    reg_btn: 'Create Account',
-                    err_frozen: 'Withdrawals are currently locked by the administrator.',
-                    err_time: 'Withdrawals are only allowed from 08:00 AM to 20:00 PM!',
-                    err_pin: 'Please set up your Withdrawal PIN from your Profile first.',
-                    err_min_10: 'Minimum withdrawal is 10 USDT.',
-                    err_funds: 'Insufficient balance.',
-                    err_invite: 'Withdrawal locked: invite at least 1 person with an active package.'
-                },
-                ru: {
-                    log_btn: 'Войти',
-                    reg_btn: 'Создать аккаунт',
-                    err_frozen: 'Вывод средств заблокирован администратором.',
-                    err_time: 'Вывод доступен только с 08:00 до 20:00.',
-                    err_pin: 'Сначала настройте PIN для вывода в профиле.',
-                    err_min_10: 'Минимальный вывод — 10 USDT.',
-                    err_funds: 'Недостаточно средств.',
-                    err_invite: 'Вывод заблокирован: пригласите хотя бы 1 человека с активным пакетом.'
-                },
-                tr: {
-                    log_btn: 'Güvenli Giriş',
-                    reg_btn: 'Hesap Oluştur',
-                    err_frozen: 'Çekimler yönetici tarafından kilitlendi.',
-                    err_time: 'Çekimler yalnızca 08:00-20:00 arasında yapılabilir.',
-                    err_pin: 'Önce profilinizden çekim PIN’i ayarlayın.',
-                    err_min_10: 'Minimum çekim 10 USDT.',
-                    err_funds: 'Yetersiz bakiye.',
-                    err_invite: 'Çekim kilitli: aktif paketli en az 1 kişi davet edin.'
-                }
-            };
-            return (dict[lang] && dict[lang][key]) || (dict.en && dict.en[key]) || key;
-        },
-
-        changeLang(lang) {
-            localStorage.setItem('lang', lang);
-            this.showToast('Language updated.', 'success');
-        },
-
-        async register() {
-            const name = document.getElementById('reg-name').value.trim();
-            const code = document.getElementById('reg-country-code').value;
-            const phone = code + document.getElementById('reg-phone').value.trim();
-            const invite = document.getElementById('reg-invite').value.trim();
-            const pass = document.getElementById('reg-password').value;
-            const confirm = document.getElementById('reg-password-confirm').value;
-            const captcha = document.getElementById('captcha-passed').value === 'true';
-
-            if (!name || !phone || !invite || !pass || !confirm) return this.showToast('Please fill all required fields.', 'error');
-            if (pass !== confirm) return this.showToast('Passwords do not match.', 'error');
-            if (!captcha) return this.showToast('Human verification failed.', 'error');
-            if (!this.validatePassword(pass)) return;
-
-            try {
-                const usersSnap = await window.fget(window.fref(window.fdb, 'users'));
-                if (usersSnap.exists()) {
-                    const all = usersSnap.val();
-                    const exists = Object.values(all).some(u => u.phone === phone);
-                    if (exists) return this.showToast('Phone already registered.', 'error');
-                }
-
-                const newRef = window.fpush(window.fref(window.fdb, 'users'), {
-                    fullName: name,
-                    phone,
-                    inviteCodeUsed: invite,
-                    password: pass,
-                    myCode: Math.random().toString(36).substring(2, 8).toUpperCase(),
-                    role: 'user',
-                    activePackage: 'none',
-                    investedAmount: 0,
-                    dailyProfit: 0,
-                    totalProfit: 0,
-                    balance: 0,
-                    createdAt: Date.now(),
-                    checkInCount: 0,
-                    consecutiveDays: 0,
-                    lastCheckIn: 0
-                });
-
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('uid', newRef.key);
-                localStorage.setItem('userPhone', phone);
-                localStorage.setItem('myCode', '');
-                localStorage.setItem('userPass', pass);
-                this.showToast('Registration successful!', 'success');
-                this.showMainApp();
-            } catch (e) {
-                this.showToast('Registration failed: ' + e.message, 'error');
-            }
-        },
-
-        init() {
-            const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            if (loggedIn) {
-                this.showMainApp();
-                this.loadLocalData();
-                this.startDatabaseListener();
-                this.listenToWithdrawals();
-                this.listenToBroadcast();
-                this.listenToPromo();
-            }
-        }
-    };
-
-    window.appLogic = appLogic;
-    document.addEventListener('DOMContentLoaded', () => window.appLogic.init());
-</script>
-</body>
-</html>
-
